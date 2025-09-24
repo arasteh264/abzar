@@ -1,103 +1,827 @@
-import Image from "next/image";
-
+"use client";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css";
+import { GoArrowLeft } from "react-icons/go";
+import { useState } from "react";
+import { RxCross2 } from "react-icons/rx";
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const slides = [
+  {
+    id: 1,
+    image: "/images/slide1.jpg",
+    text: "این متن مربوط به اسلاید اول است",
+  },
+  {
+    id: 2,
+    image: "/images/slide2.jpg",
+    text: "این متن مربوط به اسلاید دوم است",
+  },
+  {
+    id: 3,
+    image: "/images/slide3.jpg",
+    text: "این متن مربوط به اسلاید سوم است",
+  },
+];
+  const triggerAnimation = () => {
+    const elements = document.querySelectorAll(".animate-target");
+    elements.forEach((el) => {
+      el.classList.remove("price-discount-anime");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      void (el as HTMLElement).offsetWidth;
+      el.classList.add("price-discount-anime");
+    });
+  };
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="font-sans  w-full  flex flex-col items-center  text-black text-2xl">
+      <div className="flex   items-start justify-between w-full text-white backgound-homepage h-[80vh] pt-[75px]">
+        <div className="w-[70%] mx-auto flex flex-col lg:flex-row items-center justify-between">
+          <div className="flex flex-col items-start ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="20"
+              viewBox="0 0 32 20"
+              fill="none"
+            >
+              <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
+              <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
+            </svg>
+            <span className=" font-peyda-bold text-4xl pt-5">
+              بزرگترین تولید کننده قطعات الکتریکی
+            </span>
+            <p className="text-[16px] pt-6 font-peyda-medium">
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ است ...
+            </p>
+            <div className="flex items-center pt-8">
+              <button className="text-[16px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] font-peyda-medium bg-[#1a3175] hover:bg-white hover:text-[#1a3175] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+                مشاهده فروشگاه
+              </button>
+              <span className="bg-white rounded-[50px] p-2.5 text-[#1a2e77] leading-none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M10.0303 6.46967C9.73744 6.17678 9.26256 6.17678 8.96967 6.46967L3.96967 11.4697C3.67678 11.7626 3.67678 12.2374 3.96967 12.5303L8.96967 17.5303C9.26256 17.8232 9.73744 17.8232 10.0303 17.5303C10.3232 17.2374 10.3232 16.7626 10.0303 16.4697L5.56066 12L10.0303 7.53033C10.3232 7.23744 10.3232 6.76256 10.0303 6.46967Z"
+                    fill="#1C274C"
+                  ></path>
+                  <g opacity="0.5">
+                    <path
+                      d="M6.31066 11.25H14.5C15.4534 11.25 16.8667 11.5298 18.0632 12.3914C19.298 13.2804 20.25 14.7556 20.25 17C20.25 17.4142 19.9142 17.75 19.5 17.75C19.0858 17.75 18.75 17.4142 18.75 17C18.75 15.2444 18.0353 14.2196 17.1868 13.6087C16.3 12.9702 15.2133 12.75 14.5 12.75L6.31066 12.75L5.56066 12L6.31066 11.25Z"
+                      fill="#1C274C"
+                    ></path>
+                    <path
+                      d="M3.80691 11.7129C3.77024 11.8013 3.75 11.8983 3.75 12C3.75 11.9023 3.76897 11.8046 3.80691 11.7129Z"
+                      fill="#1C274C"
+                    ></path>
+                  </g>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div className="flex items-center pt-7 mainSlider">
+            <div className="at-image-container-b">
+              <div className="at-ring"></div>
+              <div className="at-ring"></div>
+              <div className="at-ring"></div>
+            </div>
+            <Swiper
+              className="w-[500px] h-[440px]"
+              spaceBetween={50}
+              slidesPerView={1}
+              onSlideChange={triggerAnimation}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+              modules={[Autoplay]}
+            >
+              <SwiperSlide>
+                <div className="flex flex-row items-center  content-center relative right-[385px] gap-[10px] bg-[#50689e] w-[23%] p-1.5 rounded-[50px] font-peyda-medium text-lg animate-target">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <path
+                      opacity="0.5"
+                      d="M6.30464 21.5159C4.24392 19.4551 3.21357 18.4248 2.83017 17.088C2.44678 15.7512 2.77443 14.3313 3.42974 11.4917L3.80764 9.8541C4.35895 7.46508 4.63461 6.27057 5.45258 5.4526C6.27055 4.63463 7.46506 4.35897 9.85408 3.80766L11.4917 3.42976C14.3313 2.77445 15.7511 2.4468 17.088 2.83019C18.4248 3.21358 19.4551 4.24394 21.5158 6.30465L23.9554 8.74416C27.5407 12.3295 29.3333 14.1221 29.3333 16.3498C29.3333 18.5774 27.5407 20.37 23.9554 23.9553L23.9554 23.9554L23.9553 23.9554C20.37 27.5407 18.5774 29.3333 16.3497 29.3333C14.1221 29.3333 12.3295 27.5407 8.74415 23.9554L6.30464 21.5159Z"
+                      fill="white"
+                    ></path>
+                    <path
+                      d="M13.4979 9.69513C14.5481 10.7452 14.5481 12.4478 13.4979 13.4979C12.4478 14.548 10.7453 14.548 9.69515 13.4979C8.64503 12.4478 8.64503 10.7452 9.69515 9.69513C10.7453 8.64502 12.4478 8.64502 13.4979 9.69513Z"
+                      fill="white"
+                    ></path>
+                    <path
+                      d="M25.4015 16.0686L16.0962 25.3743C15.7057 25.7648 15.0725 25.7648 14.682 25.3743C14.2915 24.9838 14.2915 24.3506 14.682 23.9601L23.9873 14.6544C24.3778 14.2639 25.011 14.2639 25.4015 14.6544C25.7921 15.0449 25.7921 15.6781 25.4015 16.0686Z"
+                      fill="white"
+                    ></path>
+                  </svg>
+                  <span>20%</span>
+                </div>
+                <div className="flex flex-row items-center content-center relative top-[350px] gap-[10px] bg-[#50689e] w-[35%] p-1.5 rounded-[50px] font-peyda-medium text-lg animate-target">
+                  <span>400,000 تومان</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <path
+                      opacity="0.5"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M29.3333 16C29.3333 23.3638 23.3638 29.3333 16 29.3333C8.6362 29.3333 2.66666 23.3638 2.66666 16C2.66666 8.63621 8.6362 2.66667 16 2.66667C23.3638 2.66667 29.3333 8.63621 29.3333 16Z"
+                      fill="white"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M16 7C16.5523 7 17 7.44772 17 8V8.42231C19.1739 8.81156 21 10.4448 21 12.6667C21 13.219 20.5523 13.6667 20 13.6667C19.4477 13.6667 19 13.219 19 12.6667C19 11.7621 18.2479 10.8045 17 10.4633V15.089C19.1739 15.4782 21 17.1115 21 19.3333C21 21.5552 19.1739 23.1884 17 23.5777V24C17 24.5523 16.5523 25 16 25C15.4477 25 15 24.5523 15 24V23.5777C12.8261 23.1884 11 21.5552 11 19.3333C11 18.781 11.4477 18.3333 12 18.3333C12.5523 18.3333 13 18.781 13 19.3333C13 20.2379 13.7521 21.1955 15 21.5367V16.911C12.8261 16.5218 11 14.8885 11 12.6667C11 10.4448 12.8261 8.81156 15 8.42231V8C15 7.44772 15.4477 7 16 7ZM15 10.4633C13.7521 10.8045 13 11.7621 13 12.6667C13 13.5713 13.7521 14.5288 15 14.87V10.4633ZM19 19.3333C19 18.4287 18.2479 17.4712 17 17.13V21.5367C18.2479 21.1955 19 20.2379 19 19.3333Z"
+                      fill="white"
+                    />
+                  </svg>
+                </div>
+                <span className="bottom-[70px] relative animate-target">
+                  <img
+                    src="/image/drile1.png"
+                    className="w-[5%] w-[80px] h-[80px] opacity-80   "
+                    alt=""
+                  />
+                </span>
+                <span className="relative top-[168px] right-[420px] animate-target">
+                  <img
+                    src="/image/drile1.png"
+                    className="w-[5%] w-[80px] h-[80px] opacity-80  "
+                    alt=""
+                  />
+                </span>
+                <span className="relative bottom-[252px] right-[30px]">
+                  <img
+                    src="/image/drile1.png"
+                    className="w-[85%] mainDrille"
+                    alt=""
+                  />
+                </span>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="flex flex-row items-center content-center relative right-[385px] gap-[10px] bg-[#50689e] w-[23%] p-1.5 rounded-[50px] font-peyda-medium text-lg animate-target">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <path
+                      opacity="0.5"
+                      d="M6.30464 21.5159C4.24392 19.4551 3.21357 18.4248 2.83017 17.088C2.44678 15.7512 2.77443 14.3313 3.42974 11.4917L3.80764 9.8541C4.35895 7.46508 4.63461 6.27057 5.45258 5.4526C6.27055 4.63463 7.46506 4.35897 9.85408 3.80766L11.4917 3.42976C14.3313 2.77445 15.7511 2.4468 17.088 2.83019C18.4248 3.21358 19.4551 4.24394 21.5158 6.30465L23.9554 8.74416C27.5407 12.3295 29.3333 14.1221 29.3333 16.3498C29.3333 18.5774 27.5407 20.37 23.9554 23.9553L23.9554 23.9554L23.9553 23.9554C20.37 27.5407 18.5774 29.3333 16.3497 29.3333C14.1221 29.3333 12.3295 27.5407 8.74415 23.9554L6.30464 21.5159Z"
+                      fill="white"
+                    ></path>
+                    <path
+                      d="M13.4979 9.69513C14.5481 10.7452 14.5481 12.4478 13.4979 13.4979C12.4478 14.548 10.7453 14.548 9.69515 13.4979C8.64503 12.4478 8.64503 10.7452 9.69515 9.69513C10.7453 8.64502 12.4478 8.64502 13.4979 9.69513Z"
+                      fill="white"
+                    ></path>
+                    <path
+                      d="M25.4015 16.0686L16.0962 25.3743C15.7057 25.7648 15.0725 25.7648 14.682 25.3743C14.2915 24.9838 14.2915 24.3506 14.682 23.9601L23.9873 14.6544C24.3778 14.2639 25.011 14.2639 25.4015 14.6544C25.7921 15.0449 25.7921 15.6781 25.4015 16.0686Z"
+                      fill="white"
+                    ></path>
+                  </svg>
+                  <span>20%</span>
+                </div>
+                <div className="flex flex-row items-center content-center relative top-[350px] gap-[10px] bg-[#50689e] w-[35%] p-1.5 rounded-[50px] font-peyda-medium text-lg  animate-target">
+                  <span>400,000 تومان</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <path
+                      opacity="0.5"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M29.3333 16C29.3333 23.3638 23.3638 29.3333 16 29.3333C8.6362 29.3333 2.66666 23.3638 2.66666 16C2.66666 8.63621 8.6362 2.66667 16 2.66667C23.3638 2.66667 29.3333 8.63621 29.3333 16Z"
+                      fill="white"
+                    ></path>
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M16 7C16.5523 7 17 7.44772 17 8V8.42231C19.1739 8.81156 21 10.4448 21 12.6667C21 13.219 20.5523 13.6667 20 13.6667C19.4477 13.6667 19 13.219 19 12.6667C19 11.7621 18.2479 10.8045 17 10.4633V15.089C19.1739 15.4782 21 17.1115 21 19.3333C21 21.5552 19.1739 23.1884 17 23.5777V24C17 24.5523 16.5523 25 16 25C15.4477 25 15 24.5523 15 24V23.5777C12.8261 23.1884 11 21.5552 11 19.3333C11 18.781 11.4477 18.3333 12 18.3333C12.5523 18.3333 13 18.781 13 19.3333C13 20.2379 13.7521 21.1955 15 21.5367V16.911C12.8261 16.5218 11 14.8885 11 12.6667C11 10.4448 12.8261 8.81156 15 8.42231V8C15 7.44772 15.4477 7 16 7ZM15 10.4633C13.7521 10.8045 13 11.7621 13 12.6667C13 13.5713 13.7521 14.5288 15 14.87V10.4633ZM19 19.3333C19 18.4287 18.2479 17.4712 17 17.13V21.5367C18.2479 21.1955 19 20.2379 19 19.3333Z"
+                      fill="white"
+                    ></path>
+                  </svg>
+                </div>
+                <span className="bottom-[70px] relative animate-target">
+                  <img
+                    src="/image/drile2.png"
+                    className="w-[5%] w-[80px] h-[80px] opacity-80   "
+                    alt=""
+                  />
+                </span>
+                <span className="relative top-[168px] right-[420px]  animate-target">
+                  <img
+                    src="/image/drile2.png"
+                    className="w-[5%] w-[80px] h-[80px] opacity-80  "
+                    alt=""
+                  />
+                </span>
+                <span className="relative bottom-[252px] right-[30px]">
+                  <img
+                    src="/image/drile2.png"
+                    className="w-[85%] mainDrille"
+                    alt=""
+                  />
+                </span>
+              </SwiperSlide>
+            </Swiper>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </div>
+
+      <div className="flex flex-col items-center justify-center pt-20 pb-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="20"
+          viewBox="0 0 32 20"
+          fill="none"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
+          <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
+        </svg>
+        <h1 className="text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
+          خدماتی که به شما ارائه میدهیم
+        </h1>
+        <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
+          لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
+        </p>
+      </div>
+
+      <div className="w-[70%] flex items-center justify-between pb-20">
+        <div
+          className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-8 ml-6 
+                hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222]"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <div
+            className="bg-[#253b8e] p-[17px] rounded-[50px] 
+                  group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 48 48"
+              fill="none"
+            >
+              <g opacity="0.5">
+                <path
+                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+                  fill="white"
+                ></path>
+              </g>
+              <path
+                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+                fill="white"
+              ></path>
+              <path
+                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+                fill="white"
+              ></path>
+              <path
+                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+                fill="white"
+              ></path>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+                fill="white"
+              ></path>
+            </svg>
+          </div>
+
+          <span className="text-[16px] pt-6 font-peyda-bold text-[#253B8E] group-hover:text-white transition-colors duration-300 ease-in-out">
+            30 روز بازگشت وجه
+          </span>
+
+          <button
+            className="bg-[#efefef] p-[10px] leading-none rounded-[8px] mt-7 
+                     group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+          >
+            <GoArrowLeft
+              className="bg-[#253e8b] text-[#ffffff] rounded-[5px] w-[20px] h-[20px] 
+                 group-hover:bg-white group-hover:text-yellow-400 transition-colors duration-300 ease-in-out"
+            />
+          </button>
+        </div>
+        <div
+          className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-8 ml-6 
+                hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222]"
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <div
+            className="bg-[#253b8e] p-[17px] rounded-[50px] 
+                  group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 48 48"
+              fill="none"
+            >
+              <g opacity="0.5">
+                <path
+                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+                  fill="white"
+                ></path>
+              </g>
+              <path
+                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+                fill="white"
+              ></path>
+              <path
+                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+                fill="white"
+              ></path>
+              <path
+                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+                fill="white"
+              ></path>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+                fill="white"
+              ></path>
+            </svg>
+          </div>
+
+          <span className="text-[16px] pt-6 font-peyda-bold text-[#253B8E] group-hover:text-white transition-colors duration-300 ease-in-out">
+            30 روز بازگشت وجه
+          </span>
+
+          <button
+            className="bg-[#efefef] p-[10px] leading-none rounded-[8px] mt-7 
+                     group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+          >
+            <GoArrowLeft
+              className="bg-[#253e8b] text-[#ffffff] rounded-[5px] w-[20px] h-[20px] 
+                 group-hover:bg-white group-hover:text-yellow-400 transition-colors duration-300 ease-in-out"
+            />
+          </button>
+        </div>
+        <div
+          className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-8 ml-6 
+                hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222]"
+        >
+          <div
+            className="bg-[#253b8e] p-[17px] rounded-[50px] 
+                  group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 48 48"
+              fill="none"
+            >
+              <g opacity="0.5">
+                <path
+                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+                  fill="white"
+                ></path>
+              </g>
+              <path
+                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+                fill="white"
+              ></path>
+              <path
+                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+                fill="white"
+              ></path>
+              <path
+                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+                fill="white"
+              ></path>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+                fill="white"
+              ></path>
+            </svg>
+          </div>
+
+          <span className="text-[16px] pt-6 font-peyda-bold text-[#253B8E] group-hover:text-white transition-colors duration-300 ease-in-out">
+            30 روز بازگشت وجه
+          </span>
+
+          <button
+            className="bg-[#efefef] p-[10px] leading-none rounded-[8px] mt-7 
+                     group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+          >
+            <GoArrowLeft
+              className="bg-[#253e8b] text-[#ffffff] rounded-[5px] w-[20px] h-[20px] 
+                 group-hover:bg-white group-hover:text-yellow-400 transition-colors duration-300 ease-in-out"
+            />
+          </button>
+        </div>
+        <div
+          className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-8 ml-6 
+                hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222]"
+        >
+          <div
+            className="bg-[#253b8e] p-[17px] rounded-[50px] 
+                  group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 48 48"
+              fill="none"
+            >
+              <g opacity="0.5">
+                <path
+                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+                  fill="white"
+                ></path>
+              </g>
+              <path
+                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+                fill="white"
+              ></path>
+              <path
+                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+                fill="white"
+              ></path>
+              <path
+                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+                fill="white"
+              ></path>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+                fill="white"
+              ></path>
+            </svg>
+          </div>
+
+          <span className="text-[16px] pt-6 font-peyda-bold text-[#253B8E] group-hover:text-white transition-colors duration-300 ease-in-out">
+            30 روز بازگشت وجه
+          </span>
+
+          <button
+            className="bg-[#efefef] p-[10px] leading-none rounded-[8px] mt-7 
+                     group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+          >
+            <GoArrowLeft
+              className="bg-[#253e8b] text-[#ffffff] rounded-[5px] w-[20px] h-[20px] 
+                 group-hover:bg-white group-hover:text-yellow-400 transition-colors duration-300 ease-in-out"
+            />
+          </button>
+        </div>
+        <div
+          className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-8 ml-6 
+                hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222]"
+        >
+          <div
+            className="bg-[#253b8e] p-[17px] rounded-[50px] 
+                  group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 48 48"
+              fill="none"
+            >
+              <g opacity="0.5">
+                <path
+                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+                  fill="white"
+                ></path>
+              </g>
+              <path
+                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+                fill="white"
+              ></path>
+              <path
+                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+                fill="white"
+              ></path>
+              <path
+                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+                fill="white"
+              ></path>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+                fill="white"
+              ></path>
+            </svg>
+          </div>
+
+          <span className="text-[16px] pt-6 font-peyda-bold text-[#253B8E] group-hover:text-white transition-colors duration-300 ease-in-out">
+            30 روز بازگشت وجه
+          </span>
+
+          <button
+            className="bg-[#efefef] p-[10px] leading-none rounded-[8px] mt-7 
+                     group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+          >
+            <GoArrowLeft
+              className="bg-[#253e8b] text-[#ffffff] rounded-[5px] w-[20px] h-[20px] 
+                 group-hover:bg-white group-hover:text-yellow-400 transition-colors duration-300 ease-in-out"
+            />
+          </button>
+        </div>
+      </div>
+
+      <div className="w-[70%] flex items-center justify-between pb-20">
+        <div className="w-[50%]">
+          <img src="/image/main-image1.png" alt="" />
+          <div
+            className=" modal-image absolute bottom-[-138%] left-[51%] flex items-center justify-center "
+            onClick={() => setIsOpen(true)}
+          >
+            <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="51"
+              height="52"
+              viewBox="0 0 51 52"
+              fill="none"
+            >
+              <rect
+                width="51"
+                height="52"
+                rx="25.5"
+                transform="matrix(-1 0 0 1 51 0)"
+                fill="#FED128"
+              ></rect>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M16 26C16 24.9648 16.5305 23.9295 17.5914 23.3526L30.4034 16.3855C32.4656 15.264 35 16.7237 35 19.0329L35 26H16Z"
+                fill="white"
+              ></path>
+              <path
+                opacity="0.5"
+                d="M30.4034 35.6145L17.5914 28.6474C16.5305 28.0705 16 27.0352 16 26H35L35 32.9671C35 35.2763 32.4656 36.736 30.4034 35.6145Z"
+                fill="white"
+              ></path>
+            </svg>
+            </span>
+          </div>
+        </div>
+        <div className="w-[50%] flex flex-col ">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="20"
+            viewBox="0 0 32 20"
+            fill="none"
+          >
+            <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
+            <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
+          </svg>
+          <h1 className="text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
+            درباره شرکت آریا بیشتر بدانید
+          </h1>
+          <span className="text-justify leading-[40px] text-[16px] pt-4 font-peyda-medium text-gray-500">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
+            و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای
+            زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
+            متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان
+            رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد
+            کرد.
+          </span>
+
+          <div className="flex w-[100%] flex-col pt-8">
+            <div className="flex justify-between w-[100%]">
+              <div className="flex">
+                <span className=" pl-1.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM16.0303 8.96967C16.3232 9.26256 16.3232 9.73744 16.0303 10.0303L11.0303 15.0303C10.7374 15.3232 10.2626 15.3232 9.96967 15.0303L7.96967 13.0303C7.67678 12.7374 7.67678 12.2626 7.96967 11.9697C8.26256 11.6768 8.73744 11.6768 9.03033 11.9697L10.5 13.4393L12.7348 11.2045L14.9697 8.96967C15.2626 8.67678 15.7374 8.67678 16.0303 8.96967Z"
+                      fill="#FED128"
+                    ></path>
+                  </svg>{" "}
+                </span>
+                <div className="flex flex-col width-[33%]">
+                  <h1 className="text-[16px] font-extrabold font-peyda-bold text-[#324db1]">
+                    تجهیزات و فناوری
+                  </h1>
+                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                    کاهش هزینه‌ها و افزایش
+                  </span>
+                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                    سرعت تولید.
+                  </span>
+                </div>
+              </div>
+              <div className="flex">
+                <span className=" pl-1.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM16.0303 8.96967C16.3232 9.26256 16.3232 9.73744 16.0303 10.0303L11.0303 15.0303C10.7374 15.3232 10.2626 15.3232 9.96967 15.0303L7.96967 13.0303C7.67678 12.7374 7.67678 12.2626 7.96967 11.9697C8.26256 11.6768 8.73744 11.6768 9.03033 11.9697L10.5 13.4393L12.7348 11.2045L14.9697 8.96967C15.2626 8.67678 15.7374 8.67678 16.0303 8.96967Z"
+                      fill="#FED128"
+                    ></path>
+                  </svg>{" "}
+                </span>
+                <div className="flex flex-col width-[33%]">
+                  <h1 className="text-[16px] font-extrabold font-peyda-bold text-[#324db1]">
+                    تجهیزات و فناوری
+                  </h1>
+                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                    کاهش هزینه‌ها و افزایش
+                  </span>
+                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                    سرعت تولید.
+                  </span>
+                </div>
+              </div>
+              <div className="flex">
+                <span className=" pl-1.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM16.0303 8.96967C16.3232 9.26256 16.3232 9.73744 16.0303 10.0303L11.0303 15.0303C10.7374 15.3232 10.2626 15.3232 9.96967 15.0303L7.96967 13.0303C7.67678 12.7374 7.67678 12.2626 7.96967 11.9697C8.26256 11.6768 8.73744 11.6768 9.03033 11.9697L10.5 13.4393L12.7348 11.2045L14.9697 8.96967C15.2626 8.67678 15.7374 8.67678 16.0303 8.96967Z"
+                      fill="#FED128"
+                    ></path>
+                  </svg>{" "}
+                </span>
+                <div className="flex flex-col width-[33%]">
+                  <h1 className="text-[16px] font-extrabold font-peyda-bold text-[#324db1]">
+                    تجهیزات و فناوری
+                  </h1>
+                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                    کاهش هزینه‌ها و افزایش
+                  </span>
+                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                    سرعت تولید.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-between w-full items-center mt-7 border-t border-t-[#253B8E1A] border-b border-b-[#253B8E1A] pt-4 pb-4">
+              <div className="flex items-center">
+                <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-white font-peyda-medium bg-[#1a3175] hover:bg-[#FED128] hover:text-[#1a3175] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+                  بیشتر بدانید
+                </button>
+                <span className="bg-[#FED128] text-white rounded-[50px] p-2.5  leading-none">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M10.0303 6.46967C9.73744 6.17678 9.26256 6.17678 8.96967 6.46967L3.96967 11.4697C3.67678 11.7626 3.67678 12.2374 3.96967 12.5303L8.96967 17.5303C9.26256 17.8232 9.73744 17.8232 10.0303 17.5303C10.3232 17.2374 10.3232 16.7626 10.0303 16.4697L5.56066 12L10.0303 7.53033C10.3232 7.23744 10.3232 6.76256 10.0303 6.46967Z"
+                      fill="#1C274C"
+                    ></path>
+                    <g opacity="0.5">
+                      <path
+                        d="M6.31066 11.25H14.5C15.4534 11.25 16.8667 11.5298 18.0632 12.3914C19.298 13.2804 20.25 14.7556 20.25 17C20.25 17.4142 19.9142 17.75 19.5 17.75C19.0858 17.75 18.75 17.4142 18.75 17C18.75 15.2444 18.0353 14.2196 17.1868 13.6087C16.3 12.9702 15.2133 12.75 14.5 12.75L6.31066 12.75L5.56066 12L6.31066 11.25Z"
+                        fill="#1C274C"
+                      ></path>
+                      <path
+                        d="M3.80691 11.7129C3.77024 11.8013 3.75 11.8983 3.75 12C3.75 11.9023 3.76897 11.8046 3.80691 11.7129Z"
+                        fill="#1C274C"
+                      ></path>
+                    </g>
+                  </svg>
+                </span>
+              </div>
+              <div className="flex items-center w-[45%] justify-between">
+                <div className="flex flex-col items-center border-l border-l-[#253B8E1A] pl-8">
+                  <span className="text-[14px] text-[#253B8E7D] font-peyda-medium ">
+                    مدیر عامل شرکت آریا تجارت:
+                  </span>
+                  <span className="text-[16px] text-[#1a2e77] font-peyda-medium pt-3">
+                    مهنـدس محمدرضا برزگر
+                  </span>
+                </div>
+
+                <div>
+                  <img src="/image/emza.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center pt-20 pb-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="20"
+          viewBox="0 0 32 20"
+          fill="none"
+        >
+          <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
+          <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
+        </svg>
+        <h1 className="text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
+        پروژه های موفق ما
+        </h1>
+        <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
+          لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
+        </p>
+      </div>
+
+<div>
+
+  <div className="h-[360px] overflow-hidden rounded-[24px] shadow-[0_16px_32px_0_rgb(43_55_66_/_0.1)] 
+bg-center bg-cover bg-no-repeat"  >
+<span>پروژه ساخت دریل بتونی</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white rounded-2xl shadow-lg p-6 w-[90%] max-w-md text-center relative flex flex-col font-peyda-medium">
+            <div className="flex justify-between">
+              <h2 className="text-xl font-bold text-gray-800 mb-4">
+                سلام من عنوان هستم
+              </h2>
+              <RxCross2 onClick={() => setIsOpen(false)} />
+            </div>
+
+            <span>میدونستی اینجا میتونی هرچیزی یذاری ؟؟ </span>
+            <span>حتی کد کوتاه المنتور ؟؟؟ </span>
+            <span>حتی کد کوتاه المنتور ؟؟؟ </span>
+            <span>هر المان یا قالب که میخوایییی؟؟</span>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+            >
+              منو ببند
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Header from "@/components/header";
+// import menuSection from "@/components/menuSection";
 import "./globals.css";
+import MenuSection from "@/components/menuSection";
+import FooterPage from "@/components/footerPage";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +27,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+          <header className=" bg-[#253B8E] pt-4 items-center w-full flex justify-center">
+            <Header />
+          </header>
+          
+        <main className="pb-[80px]">
+       
+
+
+   
+
+
+          {children}
+          </main>
+          <footer className="w-full flex flex-col items-center pt-8">
+            <div className="h-[1px] w-full bg-[#eeeeee] relative top-[80px] -z-1"></div>
+            <FooterPage/>
+            <div className="w-full">
+              <p className="text-center text-white bg-[#1c3377] py-4">تمامی حقوق وبسایت آریا تجارت برای شرکت آریا تجارت محفوظ میباشد.</p>
+            </div>
+            </footer>
+   
       </body>
     </html>
   );
