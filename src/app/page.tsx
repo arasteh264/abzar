@@ -6,24 +6,9 @@ import "swiper/css";
 import { GoArrowLeft } from "react-icons/go";
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import { Pagination } from 'swiper';
 export default function Home() {
-  const slides = [
-  {
-    id: 1,
-    image: "/images/slide1.jpg",
-    text: "این متن مربوط به اسلاید اول است",
-  },
-  {
-    id: 2,
-    image: "/images/slide2.jpg",
-    text: "این متن مربوط به اسلاید دوم است",
-  },
-  {
-    id: 3,
-    image: "/images/slide3.jpg",
-    text: "این متن مربوط به اسلاید سوم است",
-  },
-];
+
   const triggerAnimation = () => {
     const elements = document.querySelectorAll(".animate-target");
     elements.forEach((el) => {
@@ -767,24 +752,403 @@ export default function Home() {
           <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
           <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
         </svg>
-        <h1 className="text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
-        پروژه های موفق ما
+        <h1 className=" text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
+        پروژه های موفق ما  
         </h1>
         <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
           لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
         </p>
       </div>
 
-<div>
+<div className="w-[70%]">
+<Swiper
+              className="w-full h-[440px]"
+              slidesPerView={3} // نمایش ۳ اسلاید در یک بار
+              spaceBetween={20} // فاصله بین اسلایدها
+              centeredSlides={true} // اسلاید وسط کامل نمایش داده شود
+              grabCursor={true} // فعال‌سازی قابلیت کشیدن اسلاید
+              loop={true}
+              pagination={{
+                clickable: true,       // فعال کردن کلیک روی نقاط
+              }}
+              breakpoints={{
+                320: {
+                  slidesPerView: 1, // در موبایل فقط ۱ اسلاید نمایش داده می‌شود
+                },
+                768: {
+                  slidesPerView: 2, // در تبلت ۲ اسلاید نمایش داده می‌شود
+                },
+                1024: {
+                  slidesPerView: 3, // در دسکتاپ ۳ اسلاید نمایش داده می‌شود
+                },
+              }}
+              onSlideChange={triggerAnimation}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              modules={[Autoplay]}
+            >
+                  <SwiperSlide>
+<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+    
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+        }}
+      />
 
-  <div className="h-[360px] overflow-hidden rounded-[24px] shadow-[0_16px_32px_0_rgb(43_55_66_/_0.1)] 
-bg-center bg-cover bg-no-repeat"  >
-<span>پروژه ساخت دریل بتونی</span>
-  </div>
+    
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+   
+      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+    
+
+          <h6 className="text-lg font-peyda-bold mb-2 ">
+            پروژه ساخت دریل بتنی
+          </h6>
+    
+
+        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مدت انجام:</span>
+            <span className="font-peyda-bold">7 ماه</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">موضوع:</span>
+            <span className="font-peyda-bold">ساخت و تولید</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مقدار سفارشی:</span>
+            <span className="font-peyda-bold">سفارشی دوم</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </SwiperSlide>
+    <SwiperSlide>
+<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+    
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+        }}
+      />
+
+    
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+   
+      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+    
+
+          <h6 className="text-lg font-peyda-bold mb-2 ">
+            پروژه ساخت دریل بتنی
+          </h6>
+    
+
+        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مدت انجام:</span>
+            <span className="font-peyda-bold">7 ماه</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">موضوع:</span>
+            <span className="font-peyda-bold">ساخت و تولید</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مقدار سفارشی:</span>
+            <span className="font-peyda-bold">سفارشی دوم</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </SwiperSlide>
+    <SwiperSlide>
+<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+    
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+        }}
+      />
+
+    
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+   
+      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+    
+
+          <h6 className="text-lg font-peyda-bold mb-2 ">
+            پروژه ساخت دریل بتنی
+          </h6>
+    
+
+        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مدت انجام:</span>
+            <span className="font-peyda-bold">7 ماه</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">موضوع:</span>
+            <span className="font-peyda-bold">ساخت و تولید</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مقدار سفارشی:</span>
+            <span className="font-peyda-bold">سفارشی دوم</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </SwiperSlide>
+    <SwiperSlide>
+<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+    
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+        }}
+      />
+
+    
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+   
+      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+    
+
+          <h6 className="text-lg font-peyda-bold mb-2 ">
+            پروژه ساخت دریل بتنی
+          </h6>
+    
+
+        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مدت انجام:</span>
+            <span className="font-peyda-bold">7 ماه</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">موضوع:</span>
+            <span className="font-peyda-bold">ساخت و تولید</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مقدار سفارشی:</span>
+            <span className="font-peyda-bold">سفارشی دوم</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </SwiperSlide>
+    <SwiperSlide>
+<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+    
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+        }}
+      />
+
+    
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+   
+      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+    
+
+          <h6 className="text-lg font-peyda-bold mb-2 ">
+            پروژه ساخت دریل بتنی
+          </h6>
+    
+
+        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مدت انجام:</span>
+            <span className="font-peyda-bold">7 ماه</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">موضوع:</span>
+            <span className="font-peyda-bold">ساخت و تولید</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مقدار سفارشی:</span>
+            <span className="font-peyda-bold">سفارشی دوم</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </SwiperSlide>
+    <SwiperSlide>
+<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+    
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+        }}
+      />
+
+    
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+   
+      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+    
+
+          <h6 className="text-lg font-peyda-bold mb-2 ">
+            پروژه ساخت دریل بتنی
+          </h6>
+    
+
+        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مدت انجام:</span>
+            <span className="font-peyda-bold">7 ماه</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">موضوع:</span>
+            <span className="font-peyda-bold">ساخت و تولید</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مقدار سفارشی:</span>
+            <span className="font-peyda-bold">سفارشی دوم</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </SwiperSlide>
+    <SwiperSlide>
+<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+    
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+        }}
+      />
+
+    
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+   
+      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+    
+
+          <h6 className="text-lg font-peyda-bold mb-2 ">
+            پروژه ساخت دریل بتنی
+          </h6>
+    
+
+        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مدت انجام:</span>
+            <span className="font-peyda-bold">7 ماه</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">موضوع:</span>
+            <span className="font-peyda-bold">ساخت و تولید</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مقدار سفارشی:</span>
+            <span className="font-peyda-bold">سفارشی دوم</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </SwiperSlide>
+    <SwiperSlide>
+<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+    
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+        }}
+      />
+
+    
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+   
+      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+    
+
+          <h6 className="text-lg font-peyda-bold mb-2 ">
+            پروژه ساخت دریل بتنی
+          </h6>
+    
+
+        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مدت انجام:</span>
+            <span className="font-peyda-bold">7 ماه</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">موضوع:</span>
+            <span className="font-peyda-bold">ساخت و تولید</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="font-peyda-bold">مقدار سفارشی:</span>
+            <span className="font-peyda-bold">سفارشی دوم</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </SwiperSlide>
+    </Swiper>
 </div>
 
 
+<button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+                   مشاهده همه پروژه ها
+                </button>
 
+              <div className="w-[70%] bg-[#253B8E] bg-opacity-0 flex justify-between">
+                <div className="flex items-center">
+                  <div>
+                  <h1>کاتالوگ انواع محصولات شرکت آریا</h1>
+                  <span>لیست کامل محصولات آریا تجارت به صورت کاتالوگ</span>
+                  </div>
+                  <div>
+                  <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+                   مشاهده همه پروژه ها
+                </button>
+                <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+                   مشاهده همه پروژه ها
+                </button>
+                  </div>
+                </div>
+            <div className="flex">
+              <img src="/image/majale.png" alt="" />
+                          <div className="at-image-container-b-slide">
+              <div className="at-ring"></div>
+              <div className="at-ring"></div>
+              <div className="at-ring"></div>
+            </div>
+            </div>
+              </div>
 
 
 
