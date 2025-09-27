@@ -1,14 +1,17 @@
 "use client";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { GoArrowLeft } from "react-icons/go";
-import { useState } from "react";
-import { RxCross2 } from "react-icons/rx";
-import { Pagination } from 'swiper';
-export default function Home() {
 
+import { RxCross2 } from "react-icons/rx";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+// import { Pagination } from "swiper";
+import { RiShoppingCart2Line } from "react-icons/ri";
+export default function Home() {
   const triggerAnimation = () => {
     const elements = document.querySelectorAll(".animate-target");
     elements.forEach((el) => {
@@ -19,6 +22,7 @@ export default function Home() {
     });
   };
   const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <div className="font-sans  w-full  flex flex-col items-center  text-black text-2xl">
       <div className="flex   items-start justify-between w-full text-white backgound-homepage h-[80vh] pt-[75px]">
@@ -547,32 +551,32 @@ export default function Home() {
             onClick={() => setIsOpen(true)}
           >
             <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="51"
-              height="52"
-              viewBox="0 0 51 52"
-              fill="none"
-            >
-              <rect
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
                 width="51"
                 height="52"
-                rx="25.5"
-                transform="matrix(-1 0 0 1 51 0)"
-                fill="#FED128"
-              ></rect>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M16 26C16 24.9648 16.5305 23.9295 17.5914 23.3526L30.4034 16.3855C32.4656 15.264 35 16.7237 35 19.0329L35 26H16Z"
-                fill="white"
-              ></path>
-              <path
-                opacity="0.5"
-                d="M30.4034 35.6145L17.5914 28.6474C16.5305 28.0705 16 27.0352 16 26H35L35 32.9671C35 35.2763 32.4656 36.736 30.4034 35.6145Z"
-                fill="white"
-              ></path>
-            </svg>
+                viewBox="0 0 51 52"
+                fill="none"
+              >
+                <rect
+                  width="51"
+                  height="52"
+                  rx="25.5"
+                  transform="matrix(-1 0 0 1 51 0)"
+                  fill="#FED128"
+                ></rect>
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M16 26C16 24.9648 16.5305 23.9295 17.5914 23.3526L30.4034 16.3855C32.4656 15.264 35 16.7237 35 19.0329L35 26H16Z"
+                  fill="white"
+                ></path>
+                <path
+                  opacity="0.5"
+                  d="M30.4034 35.6145L17.5914 28.6474C16.5305 28.0705 16 27.0352 16 26H35L35 32.9671C35 35.2763 32.4656 36.736 30.4034 35.6145Z"
+                  fill="white"
+                ></path>
+              </svg>
             </span>
           </div>
         </div>
@@ -753,7 +757,1688 @@ export default function Home() {
           <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
         </svg>
         <h1 className=" text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
-        پروژه های موفق ما  
+          پروژه های موفق ما
+        </h1>
+        <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
+          لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
+        </p>
+      </div>
+
+      <div className="w-[70%]">
+        <Swiper
+          className="w-full h-[440px]"
+          slidesPerView={3.8} // نمایش ۳ اسلاید در یک بار
+          spaceBetween={20} // فاصله بین اسلایدها
+          centeredSlides={true} // اسلاید وسط کامل نمایش داده شود
+          grabCursor={true} // فعال‌سازی قابلیت کشیدن اسلاید
+          loop={true}
+          pagination={{
+            clickable: true, // فعال کردن کلیک روی نقاط
+          }}
+          // breakpoints={{
+          //   320: {
+          //     slidesPerView: 1, // در موبایل فقط ۱ اسلاید نمایش داده می‌شود
+          //   },
+          //   768: {
+          //     slidesPerView: 2, // در تبلت ۲ اسلاید نمایش داده می‌شود
+          //   },
+          //   1024: {
+          //     slidesPerView: 3, // در دسکتاپ ۳ اسلاید نمایش داده می‌شود
+          //   },
+          // }}
+          onSlideChange={triggerAnimation}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
+        >
+          <SwiperSlide>
+            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+                }}
+              />
+
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+                <h6 className="text-lg font-peyda-bold mb-2 ">
+                  پروژه ساخت دریل بتنی
+                </h6>
+
+                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.5"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
+                        fill="white"
+                      ></path>
+                      <path
+                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </span>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مدت انجام:</span>
+                    <span className="font-peyda-bold">7 ماه</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">موضوع:</span>
+                    <span className="font-peyda-bold">ساخت و تولید</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مقدار سفارشی:</span>
+                    <span className="font-peyda-bold">سفارشی دوم</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+                }}
+              />
+
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+                <h6 className="text-lg font-peyda-bold mb-2 ">
+                  پروژه ساخت دریل بتنی
+                </h6>
+
+                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.5"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
+                        fill="white"
+                      ></path>
+                      <path
+                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </span>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مدت انجام:</span>
+                    <span className="font-peyda-bold">7 ماه</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">موضوع:</span>
+                    <span className="font-peyda-bold">ساخت و تولید</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مقدار سفارشی:</span>
+                    <span className="font-peyda-bold">سفارشی دوم</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+                }}
+              />
+
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+                <h6 className="text-lg font-peyda-bold mb-2 ">
+                  پروژه ساخت دریل بتنی
+                </h6>
+
+                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.5"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
+                        fill="white"
+                      ></path>
+                      <path
+                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </span>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مدت انجام:</span>
+                    <span className="font-peyda-bold">7 ماه</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">موضوع:</span>
+                    <span className="font-peyda-bold">ساخت و تولید</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مقدار سفارشی:</span>
+                    <span className="font-peyda-bold">سفارشی دوم</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+                }}
+              />
+
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+                <h6 className="text-lg font-peyda-bold mb-2 ">
+                  پروژه ساخت دریل بتنی
+                </h6>
+
+                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.5"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
+                        fill="white"
+                      ></path>
+                      <path
+                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </span>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مدت انجام:</span>
+                    <span className="font-peyda-bold">7 ماه</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">موضوع:</span>
+                    <span className="font-peyda-bold">ساخت و تولید</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مقدار سفارشی:</span>
+                    <span className="font-peyda-bold">سفارشی دوم</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+                }}
+              />
+
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+                <h6 className="text-lg font-peyda-bold mb-2 ">
+                  پروژه ساخت دریل بتنی
+                </h6>
+
+                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.5"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
+                        fill="white"
+                      ></path>
+                      <path
+                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </span>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مدت انجام:</span>
+                    <span className="font-peyda-bold">7 ماه</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">موضوع:</span>
+                    <span className="font-peyda-bold">ساخت و تولید</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مقدار سفارشی:</span>
+                    <span className="font-peyda-bold">سفارشی دوم</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+                }}
+              />
+
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+                <h6 className="text-lg font-peyda-bold mb-2 ">
+                  پروژه ساخت دریل بتنی
+                </h6>
+
+                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.5"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
+                        fill="white"
+                      ></path>
+                      <path
+                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </span>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مدت انجام:</span>
+                    <span className="font-peyda-bold">7 ماه</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">موضوع:</span>
+                    <span className="font-peyda-bold">ساخت و تولید</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مقدار سفارشی:</span>
+                    <span className="font-peyda-bold">سفارشی دوم</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+                }}
+              />
+
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+                <h6 className="text-lg font-peyda-bold mb-2 ">
+                  پروژه ساخت دریل بتنی
+                </h6>
+
+                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.5"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
+                        fill="white"
+                      ></path>
+                      <path
+                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </span>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مدت انجام:</span>
+                    <span className="font-peyda-bold">7 ماه</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">موضوع:</span>
+                    <span className="font-peyda-bold">ساخت و تولید</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مقدار سفارشی:</span>
+                    <span className="font-peyda-bold">سفارشی دوم</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
+                }}
+              />
+
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+
+              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+                <h6 className="text-lg font-peyda-bold mb-2 ">
+                  پروژه ساخت دریل بتنی
+                </h6>
+
+                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.5"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
+                        fill="white"
+                      ></path>
+                      <path
+                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </span>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مدت انجام:</span>
+                    <span className="font-peyda-bold">7 ماه</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">موضوع:</span>
+                    <span className="font-peyda-bold">ساخت و تولید</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-peyda-bold">مقدار سفارشی:</span>
+                    <span className="font-peyda-bold">سفارشی دوم</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+
+      <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+        مشاهده همه پروژه ها
+      </button>
+
+      <div className="w-[70%] h-[148px] bg-[#253B8E] bg-opacity-0 flex justify-between rounded-[20px] pr-7  mt-30">
+        <div className="flex items-center">
+          <div>
+            <h1 className="font-peyda-medium text-[25px] text-white">
+              کاتالوگ انواع محصولات شرکت آریا
+            </h1>
+            <span className="font-peyda-medium text-[15px] text-white">
+              لیست کامل محصولات آریا تجارت به صورت کاتالوگ
+            </span>
+          </div>
+          <div className="flex flex-col gap-5 pr-20">
+            <button className="text-[15px]  pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-[#fed128] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+              مشاهده محصولات
+            </button>
+            <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover: bg-[#fed128]  hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+              دانلود نسخه PDF
+            </button>
+          </div>
+        </div>
+        <div className="flex">
+          <img
+            src="/image/majale.png"
+            className="w-[93%] h-[135%] relative top-[-35px] right-[-60px] z-10"
+            alt=""
+          />
+          <div className="at-image-container-b-slide">
+            <div className="at-ring"></div>
+            <div className="at-ring"></div>
+            <div className="at-ring"></div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center justify-center pt-30 pb-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="20"
+          viewBox="0 0 32 20"
+          fill="none"
+        >
+          <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
+          <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
+        </svg>
+        <h1 className=" text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
+          محصولات پرفروش ما
+        </h1>
+        <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
+          لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
+        </p>
+      </div>
+
+      <div className=" w-[70%]  flex  relative mt-10 h-full mb-10">
+        <button className="swiper-button-prev absolute !left-[-50px]  -translate-y-1/2 z-10 p-2  text-white rounded-full
+          rounded-[50px] border border-white 
+         bg-gradient-to-b from-[#f5f6f7] to-[#ffffff] 
+         transition ease-in-out duration-300 
+         pt-[10px] pr-[7px] pb-[7px] pl-[7px]
+        ">
+          <GrFormPrevious />
+        </button>
+        <button className="swiper-button-next  absolute !right-[-50px] -translate-y-1/2 z-10 p-2  text-white rounded-full   bg-gradient-to-b from-[#f5f6f7] to-[#ffffff]">
+          <GrFormNext />
+        </button>
+        <Swiper
+          className="w-full "
+          slidesPerView={4.9} // نمایش ۳ اسلاید در یک بار
+          spaceBetween={0} // فاصله بین اسلایدها
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          grabCursor={true} // فعال‌سازی قابلیت کشیدن اسلاید
+          loop={true}
+          // pagination={{
+          //   clickable: true, // فعال کردن کلیک روی نقاط
+          // }}
+          // breakpoints={{
+          //   320: {
+          //     slidesPerView: 1, // در موبایل فقط ۱ اسلاید نمایش داده می‌شود
+          //   },
+          //   768: {
+          //     slidesPerView: 2, // در تبلت ۲ اسلاید نمایش داده می‌شود
+          //   },
+          //   1024: {
+          //     slidesPerView: 3, // در دسکتاپ ۳ اسلاید نمایش داده می‌شود
+          //   },
+          // }}
+          onSlideChange={triggerAnimation}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay, Navigation]}
+        >
+          <SwiperSlide >
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/Frame-10856-min.webp"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/Frame-10856-min.webp"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+
+            <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] mt-10
+             text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+     مشاهده همه محصولات
+      </button>
+
+
+           <div className="flex flex-col items-center justify-center pt-30 pb-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="20"
+          viewBox="0 0 32 20"
+          fill="none"
+        >
+          <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
+          <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
+        </svg>
+        <h1 className=" text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
+    جدید ترین محصولات 
+        </h1>
+        <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
+          لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
+        </p>
+      </div>
+
+      <div className=" w-[70%]  flex  relative mt-10 h-full mb-10">
+        <button className="swiper-button-prev absolute !left-[-50px]  -translate-y-1/2 z-10 p-2  text-white rounded-full
+          rounded-[50px] border border-white 
+         bg-gradient-to-b from-[#f5f6f7] to-[#ffffff] 
+         transition ease-in-out duration-300 
+         pt-[10px] pr-[7px] pb-[7px] pl-[7px]
+        ">
+          <GrFormPrevious />
+        </button>
+        <button className="swiper-button-next  absolute !right-[-50px] -translate-y-1/2 z-10 p-2  text-white rounded-full   bg-gradient-to-b from-[#f5f6f7] to-[#ffffff]">
+          <GrFormNext />
+        </button>
+        <Swiper
+          className="w-full "
+          slidesPerView={4.9} // نمایش ۳ اسلاید در یک بار
+          spaceBetween={0} // فاصله بین اسلایدها
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          grabCursor={true} // فعال‌سازی قابلیت کشیدن اسلاید
+          loop={true}
+          // pagination={{
+          //   clickable: true, // فعال کردن کلیک روی نقاط
+          // }}
+          // breakpoints={{
+          //   320: {
+          //     slidesPerView: 1, // در موبایل فقط ۱ اسلاید نمایش داده می‌شود
+          //   },
+          //   768: {
+          //     slidesPerView: 2, // در تبلت ۲ اسلاید نمایش داده می‌شود
+          //   },
+          //   1024: {
+          //     slidesPerView: 3, // در دسکتاپ ۳ اسلاید نمایش داده می‌شود
+          //   },
+          // }}
+          onSlideChange={triggerAnimation}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay, Navigation]}
+        >
+          <SwiperSlide >
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/Frame-10856-min.webp"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/Frame-10856-min.webp"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+                <span className="text-center block rounded-[60px]">
+                  <img
+                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
+                    alt="دستگاه برش cwa5qa"
+                    className="rounded-[20px]"
+                  />
+                </span>
+              </div>
+
+              <span className="text-gray-800 font-peyda-medium">
+                دستگاه برش cwa5qa
+              </span>
+
+              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  ابزار صنعتی
+                </span>
+                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                  بتن شکن
+                </span>
+              </div>
+
+              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+                <button
+                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+                >
+                  <RiShoppingCart2Line
+                    className="text-white rounded-[5px] w-[15px] h-[15px] 
+               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                  />
+                </button>
+                <div>
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    2,000,000 تومان
+                  </span>
+                  {/* <span>اگر تخفیف داشت</span> */}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+
+            <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] mt-10
+             text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+     مشاهده همه محصولات
+      </button>
+
+           <div className="flex flex-col items-center justify-center pt-30 pb-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="20"
+          viewBox="0 0 32 20"
+          fill="none"
+        >
+          <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
+          <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
+        </svg>
+        <h1 className=" text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
+      مراحل ثبت سفارش پروژه 
         </h1>
         <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
           لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
@@ -761,404 +2446,25 @@ export default function Home() {
       </div>
 
 <div className="w-[70%]">
-<Swiper
-              className="w-full h-[440px]"
-              slidesPerView={3} // نمایش ۳ اسلاید در یک بار
-              spaceBetween={20} // فاصله بین اسلایدها
-              centeredSlides={true} // اسلاید وسط کامل نمایش داده شود
-              grabCursor={true} // فعال‌سازی قابلیت کشیدن اسلاید
-              loop={true}
-              pagination={{
-                clickable: true,       // فعال کردن کلیک روی نقاط
-              }}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1, // در موبایل فقط ۱ اسلاید نمایش داده می‌شود
-                },
-                768: {
-                  slidesPerView: 2, // در تبلت ۲ اسلاید نمایش داده می‌شود
-                },
-                1024: {
-                  slidesPerView: 3, // در دسکتاپ ۳ اسلاید نمایش داده می‌شود
-                },
-              }}
-              onSlideChange={triggerAnimation}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              modules={[Autoplay]}
-            >
-                  <SwiperSlide>
-<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-    
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-        }}
-      />
 
-    
-      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-   
-      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-    
-
-          <h6 className="text-lg font-peyda-bold mb-2 ">
-            پروژه ساخت دریل بتنی
-          </h6>
-    
-
-        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مدت انجام:</span>
-            <span className="font-peyda-bold">7 ماه</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">موضوع:</span>
-            <span className="font-peyda-bold">ساخت و تولید</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مقدار سفارشی:</span>
-            <span className="font-peyda-bold">سفارشی دوم</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </SwiperSlide>
-    <SwiperSlide>
-<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-    
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-        }}
-      />
-
-    
-      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-   
-      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-    
-
-          <h6 className="text-lg font-peyda-bold mb-2 ">
-            پروژه ساخت دریل بتنی
-          </h6>
-    
-
-        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مدت انجام:</span>
-            <span className="font-peyda-bold">7 ماه</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">موضوع:</span>
-            <span className="font-peyda-bold">ساخت و تولید</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مقدار سفارشی:</span>
-            <span className="font-peyda-bold">سفارشی دوم</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </SwiperSlide>
-    <SwiperSlide>
-<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-    
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-        }}
-      />
-
-    
-      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-   
-      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-    
-
-          <h6 className="text-lg font-peyda-bold mb-2 ">
-            پروژه ساخت دریل بتنی
-          </h6>
-    
-
-        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مدت انجام:</span>
-            <span className="font-peyda-bold">7 ماه</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">موضوع:</span>
-            <span className="font-peyda-bold">ساخت و تولید</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مقدار سفارشی:</span>
-            <span className="font-peyda-bold">سفارشی دوم</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </SwiperSlide>
-    <SwiperSlide>
-<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-    
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-        }}
-      />
-
-    
-      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-   
-      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-    
-
-          <h6 className="text-lg font-peyda-bold mb-2 ">
-            پروژه ساخت دریل بتنی
-          </h6>
-    
-
-        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مدت انجام:</span>
-            <span className="font-peyda-bold">7 ماه</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">موضوع:</span>
-            <span className="font-peyda-bold">ساخت و تولید</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مقدار سفارشی:</span>
-            <span className="font-peyda-bold">سفارشی دوم</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </SwiperSlide>
-    <SwiperSlide>
-<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-    
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-        }}
-      />
-
-    
-      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-   
-      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-    
-
-          <h6 className="text-lg font-peyda-bold mb-2 ">
-            پروژه ساخت دریل بتنی
-          </h6>
-    
-
-        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مدت انجام:</span>
-            <span className="font-peyda-bold">7 ماه</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">موضوع:</span>
-            <span className="font-peyda-bold">ساخت و تولید</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مقدار سفارشی:</span>
-            <span className="font-peyda-bold">سفارشی دوم</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </SwiperSlide>
-    <SwiperSlide>
-<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-    
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-        }}
-      />
-
-    
-      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-   
-      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-    
-
-          <h6 className="text-lg font-peyda-bold mb-2 ">
-            پروژه ساخت دریل بتنی
-          </h6>
-    
-
-        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مدت انجام:</span>
-            <span className="font-peyda-bold">7 ماه</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">موضوع:</span>
-            <span className="font-peyda-bold">ساخت و تولید</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مقدار سفارشی:</span>
-            <span className="font-peyda-bold">سفارشی دوم</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </SwiperSlide>
-    <SwiperSlide>
-<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-    
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-        }}
-      />
-
-    
-      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-   
-      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-    
-
-          <h6 className="text-lg font-peyda-bold mb-2 ">
-            پروژه ساخت دریل بتنی
-          </h6>
-    
-
-        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مدت انجام:</span>
-            <span className="font-peyda-bold">7 ماه</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">موضوع:</span>
-            <span className="font-peyda-bold">ساخت و تولید</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مقدار سفارشی:</span>
-            <span className="font-peyda-bold">سفارشی دوم</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </SwiperSlide>
-    <SwiperSlide>
-<div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-    
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-        }}
-      />
-
-    
-      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-   
-      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-    
-
-          <h6 className="text-lg font-peyda-bold mb-2 ">
-            پروژه ساخت دریل بتنی
-          </h6>
-    
-
-        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path><path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path></svg></span>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مدت انجام:</span>
-            <span className="font-peyda-bold">7 ماه</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">موضوع:</span>
-            <span className="font-peyda-bold">ساخت و تولید</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-peyda-bold">مقدار سفارشی:</span>
-            <span className="font-peyda-bold">سفارشی دوم</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </SwiperSlide>
-    </Swiper>
+<div className="flex items-center w-[50%]">
+  <span className="border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] w-[20%] h-[400] p-12">
+  <img src="/image/telephone.svg" className="w-[100%] h-full" alt="" />
+  </span>
+  <span className="bg-[#dee2ec] p-15 relative">01</span>
+  <div className='h-[400] border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A]  '>
+    <span className="font-extrabold font-peyda-bold text-[17px] ">
+      ارتباط با تیم پشتیبانی
+    </span>
+    <br />
+    <span className="text-[14px]  font-peyda-medium text-gray-500">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.</span>
+  </div>
 </div>
 
 
-<button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
-                   مشاهده همه پروژه ها
-                </button>
-
-              <div className="w-[70%] bg-[#253B8E] bg-opacity-0 flex justify-between">
-                <div className="flex items-center">
-                  <div>
-                  <h1>کاتالوگ انواع محصولات شرکت آریا</h1>
-                  <span>لیست کامل محصولات آریا تجارت به صورت کاتالوگ</span>
-                  </div>
-                  <div>
-                  <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
-                   مشاهده همه پروژه ها
-                </button>
-                <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
-                   مشاهده همه پروژه ها
-                </button>
-                  </div>
-                </div>
-            <div className="flex">
-              <img src="/image/majale.png" alt="" />
-                          <div className="at-image-container-b-slide">
-              <div className="at-ring"></div>
-              <div className="at-ring"></div>
-              <div className="at-ring"></div>
-            </div>
-            </div>
-              </div>
 
 
-
-
-
-
-
-
-
-
+</div>
 
 
 

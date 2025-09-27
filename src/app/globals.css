@@ -287,5 +287,8 @@ background-color: white;
   position: absolute;
   width: 200px;
   height: 200px;
-  left: 304px;
+  left: 386px;
+}
+button{
+  cursor: pointer;
 }
