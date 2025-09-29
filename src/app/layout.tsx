@@ -35,7 +35,9 @@ export default function RootLayout({
           <header className=" bg-[#253B8E] pt-4 items-center w-full flex justify-center">
             <Header />
           </header>
-          
+            <div className="w-full sticky top-[0px] z-50 bg-[#253B8E] flex justify-center pt-9 pb-7">
+    <MenuSection />
+  </div>
         <main className="pb-[80px]">
        
 

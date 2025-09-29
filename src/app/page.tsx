@@ -6,12 +6,46 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { GoArrowLeft } from "react-icons/go";
-
+import { BsPersonCheck } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
-// import { Pagination } from "swiper";
 import { RiShoppingCart2Line } from "react-icons/ri";
+import { LuMessageSquareText } from "react-icons/lu";
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const box1Ref = useRef<HTMLDivElement | null>(null);
+  const box2Ref = useRef<HTMLDivElement | null>(null);
+  const box3Ref = useRef<HTMLDivElement | null>(null);
+  const box4Ref = useRef<HTMLDivElement | null>(null);
+  const box5Ref = useRef<HTMLDivElement | null>(null);
+  const box6Ref = useRef<HTMLDivElement | null>(null);
+
+  const [isActive1, setIsActive1] = useState(false);
+  const [isActive2, setIsActive2] = useState(false);
+  const [isActive3, setIsActive3] = useState(false);
+  const [isActive4, setIsActive4] = useState(false);
+  const [isActive5, setIsActive5] = useState(false);
+  const [isActive6, setIsActive6] = useState(false);
+
+  const checkActive = (
+    ref: React.RefObject<HTMLDivElement | null>,
+    setActive: (val: boolean) => void
+  ): void => {
+    if (!ref.current) return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const windowCenter = window.innerHeight / 2;
+
+    // فقط وقتی دیو تازه وارد مرکز viewport شد رنگش تغییر کند
+    if (rect.top < windowCenter && rect.bottom > 0) {
+      setActive(true); // فعال می‌کنیم
+    }
+    // اگر میخوای رنگ برنگردد وقتی خارج شد، این خط را حذف کن
+    else {
+      setActive(false); // غیرفعال می‌کنیم
+    }
+  };
   const triggerAnimation = () => {
     const elements = document.querySelectorAll(".animate-target");
     elements.forEach((el) => {
@@ -21,8 +55,23 @@ export default function Home() {
       el.classList.add("price-discount-anime");
     });
   };
-  const [isOpen, setIsOpen] = useState(false);
-  
+
+  useEffect(() => {
+    const handleScroll = () => {
+      checkActive(box1Ref, setIsActive1);
+      checkActive(box2Ref, setIsActive2);
+      checkActive(box3Ref, setIsActive3);
+      checkActive(box4Ref, setIsActive4);
+      checkActive(box5Ref, setIsActive5);
+      checkActive(box6Ref, setIsActive6);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // بررسی اولیه
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="font-sans  w-full  flex flex-col items-center  text-black text-2xl">
       <div className="flex   items-start justify-between w-full text-white backgound-homepage h-[80vh] pt-[75px]">
@@ -1293,12 +1342,14 @@ export default function Home() {
       </div>
 
       <div className=" w-[70%]  flex  relative mt-10 h-full mb-10">
-        <button className="swiper-button-prev absolute !left-[-50px]  -translate-y-1/2 z-10 p-2  text-white rounded-full
+        <button
+          className="swiper-button-prev absolute !left-[-50px]  -translate-y-1/2 z-10 p-2  text-white rounded-full
           rounded-[50px] border border-white 
          bg-gradient-to-b from-[#f5f6f7] to-[#ffffff] 
          transition ease-in-out duration-300 
          pt-[10px] pr-[7px] pb-[7px] pl-[7px]
-        ">
+        "
+        >
           <GrFormPrevious />
         </button>
         <button className="swiper-button-next  absolute !right-[-50px] -translate-y-1/2 z-10 p-2  text-white rounded-full   bg-gradient-to-b from-[#f5f6f7] to-[#ffffff]">
@@ -1335,7 +1386,7 @@ export default function Home() {
           }}
           modules={[Autoplay, Navigation]}
         >
-          <SwiperSlide >
+          <SwiperSlide>
             <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
               <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
                 <span className="text-center block rounded-[60px]">
@@ -1844,13 +1895,14 @@ export default function Home() {
         </Swiper>
       </div>
 
-            <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] mt-10
-             text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
-     مشاهده همه محصولات
+      <button
+        className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] mt-10
+             text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out"
+      >
+        مشاهده همه محصولات
       </button>
 
-
-           <div className="flex flex-col items-center justify-center pt-30 pb-20">
+      <div className="flex flex-col items-center justify-center pt-30 pb-20">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
@@ -1862,7 +1914,7 @@ export default function Home() {
           <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
         </svg>
         <h1 className=" text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
-    جدید ترین محصولات 
+          جدید ترین محصولات
         </h1>
         <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
           لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
@@ -1870,12 +1922,14 @@ export default function Home() {
       </div>
 
       <div className=" w-[70%]  flex  relative mt-10 h-full mb-10">
-        <button className="swiper-button-prev absolute !left-[-50px]  -translate-y-1/2 z-10 p-2  text-white rounded-full
+        <button
+          className="swiper-button-prev absolute !left-[-50px]  -translate-y-1/2 z-10 p-2  text-white rounded-full
           rounded-[50px] border border-white 
          bg-gradient-to-b from-[#f5f6f7] to-[#ffffff] 
          transition ease-in-out duration-300 
          pt-[10px] pr-[7px] pb-[7px] pl-[7px]
-        ">
+        "
+        >
           <GrFormPrevious />
         </button>
         <button className="swiper-button-next  absolute !right-[-50px] -translate-y-1/2 z-10 p-2  text-white rounded-full   bg-gradient-to-b from-[#f5f6f7] to-[#ffffff]">
@@ -1912,7 +1966,7 @@ export default function Home() {
           }}
           modules={[Autoplay, Navigation]}
         >
-          <SwiperSlide >
+          <SwiperSlide>
             <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
               <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
                 <span className="text-center block rounded-[60px]">
@@ -2421,12 +2475,14 @@ export default function Home() {
         </Swiper>
       </div>
 
-            <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] mt-10
-             text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
-     مشاهده همه محصولات
+      <button
+        className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] mt-10
+             text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out"
+      >
+        مشاهده همه محصولات
       </button>
 
-           <div className="flex flex-col items-center justify-center pt-30 pb-20">
+      <div className="flex flex-col items-center justify-center pt-30 pb-20">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
@@ -2438,36 +2494,607 @@ export default function Home() {
           <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
         </svg>
         <h1 className=" text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
-      مراحل ثبت سفارش پروژه 
+          مراحل ثبت سفارش پروژه
         </h1>
         <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
           لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
         </p>
       </div>
 
-<div className="w-[70%]">
+      <div className="w-[88%] flex flex-col items-center">
+        <div className="w-[62%] ">
+          <div className="inlineSection-part w-full flex flex-col justify-between gap-[2rem] items-center ">
+            <div className="flex items-center justify-self-end mr-auto min-w-[770px] max-w-[770px] relative -left-[77px]">
+              <span className="border-2 border-white rounded-tr-[31px] rounded-br-[31px] shadow-[0_16px_32px_0_#2B37421A] h-[115px] w-[15%] flex items-center justify-center">
+                <img src="/image/telephone.svg" className="" alt="h-[400]" />
+              </span>
 
-<div className="flex items-center w-[50%]">
-  <span className="border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] w-[20%] h-[400] p-12">
-  <img src="/image/telephone.svg" className="w-[100%] h-full" alt="" />
-  </span>
-  <span className="bg-[#dee2ec] p-15 relative">01</span>
-  <div className='h-[400] border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A]  '>
-    <span className="font-extrabold font-peyda-bold text-[17px] ">
-      ارتباط با تیم پشتیبانی
-    </span>
-    <br />
-    <span className="text-[14px]  font-peyda-medium text-gray-500">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.</span>
-  </div>
-</div>
+              <div
+                ref={box1Ref}
+                className={`p-12 rounded-[15px] h-[135px] font-peyda-medium w-[125px] transition-all duration-500 ease-in-out
+    ${isActive1 ? "bg-[#253b8e] text-white" : "bg-[#dee2ec] text-[#253B8E]"}`}
+              >
+                <span className="text-[40px] font-extrabold font-peyda-bold">
+                  01
+                </span>
+              </div>
 
+              <div className="h-[600] border-2 border-white rounded-tl-[31px] rounded-bl-[31px] shadow-[0_16px_32px_0_#2B37421A] p-2 w-[50%]  pr-6">
+                <span className="font-extrabold font-peyda-bold text-[17px] ">
+                  ارتباط با تیم پشتیبانی
+                </span>
+                <br />
+                <span className="text-[14px] bg-red h-[115px] font-peyda-medium text-gray-500 ">
+                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                  با استفاده از طراحان گرافیک است.
+                </span>
+              </div>
+            </div>
 
+            <div className="flex items-center  justify-self-center ml-auto min-w-[770px]  max-w-[770px] relative right-[75px]">
+              <div className="h-[600] border-2 border-white rounded-tr-[31px] rounded-br-[31px] shadow-[0_16px_32px_0_#2B37421A] p-2 w-[50%]  pr-6">
+                <span className="font-extrabold font-peyda-bold text-[17px] ">
+                  استعلام قیمت
+                </span>
+                <br />
+                <span className="text-[14px] bg-red h-[115px] font-peyda-medium text-gray-500 ">
+                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                  با استفاده از طراحان گرافیک است.
+                </span>
+              </div>
 
+              <div
+                ref={box2Ref}
+                className={`p-12 rounded-[15px] h-[135px] font-peyda-medium w-[125px] transition-all duration-500 ease-in-out
+    ${isActive2 ? "bg-[#253b8e] text-white" : "bg-[#dee2ec] text-[#253B8E]"}`}
+              >
+                <span className="h-[800]  text-[40px] font-extrabold font-peyda-bold">
+                  02
+                </span>
+              </div>
+              <span className="border-2 border-white rounded-tl-[31px] rounded-bl-[31px] shadow-[0_16px_32px_0_#2B37421A] h-[115px] w-[15%] flex items-center justify-center">
+                <img src="/image/alpha.png" className="" alt="h-[400]" />
+              </span>
+            </div>
 
-</div>
+            <div className="flex items-center justify-self-end mr-auto min-w-[770px]  max-w-[770px] relative -left-[77px]">
+              <span className="border-2 border-white rounded-tr-[31px] rounded-br-[31px] shadow-[0_16px_32px_0_#2B37421A] h-[115px] w-[15%] flex items-center justify-center">
+                <img src="/image/kia.png" className="" alt="h-[400]" />
+              </span>
 
+              <div
+                ref={box3Ref}
+                className={`p-12 rounded-[15px] h-[135px] font-peyda-medium w-[125px] transition-all duration-500 ease-in-out
+    ${isActive3 ? "bg-[#253b8e] text-white" : "bg-[#dee2ec] text-[#253B8E]"}`}
+              >
+                <span className="h-[800]  text-[40px] font-extrabold font-peyda-bold">
+                  03
+                </span>
+              </div>
 
+              <div className="h-[600] border-2 border-white rounded-tl-[31px] rounded-bl-[31px] shadow-[0_16px_32px_0_#2B37421A] p-2 w-[48%]  pr-6">
+                <span className="font-extrabold font-peyda-bold text-[17px] ">
+                  دریافت قرار داد
+                </span>
+                <br />
+                <span className="text-[14px] bg-red h-[115px] font-peyda-medium text-gray-500 ">
+                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                  با استفاده از طراحان گرافیک است.
+                </span>
+              </div>
+            </div>
 
+            <div className="flex items-center  justify-self-center ml-auto min-w-[770px]  max-w-[770px] relative right-[75px]">
+              <div className="h-[600] border-2 border-white rounded-tr-[31px] rounded-br-[31px] shadow-[0_16px_32px_0_#2B37421A] p-2 w-[50%]  pr-6">
+                <span className="font-extrabold font-peyda-bold text-[17px] ">
+                  استعلام قیمت
+                </span>
+                <br />
+                <span className="text-[14px] bg-red h-[115px] font-peyda-medium text-gray-500 ">
+                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                  با استفاده از طراحان گرافیک است.
+                </span>
+              </div>
+
+              <div
+                ref={box4Ref}
+                className={`p-12 rounded-[15px] h-[135px] font-peyda-medium w-[125px] transition-all duration-500 ease-in-out
+    ${isActive4 ? "bg-[#253b8e] text-white" : "bg-[#dee2ec] text-[#253B8E]"}`}
+              >
+                <span className="h-[800]  text-[40px] font-extrabold font-peyda-bold">
+                  04
+                </span>
+              </div>
+              <span className="border-2 border-white rounded-tl-[31px] rounded-bl-[31px] shadow-[0_16px_32px_0_#2B37421A] h-[115px] w-[15%] flex items-center justify-center">
+                <img src="/image/alpha.png" className="" alt="h-[400]" />
+              </span>
+            </div>
+
+            <div className="flex items-center justify-self-end mr-auto min-w-[770px]  max-w-[770px] relative -left-[77px]">
+              <span className="border-2 border-white rounded-tr-[31px] rounded-br-[31px] shadow-[0_16px_32px_0_#2B37421A] h-[115px] w-[15%] flex items-center justify-center">
+                <img src="/image/telephone.svg" className="" alt="h-[400]" />
+              </span>
+
+              <div
+                ref={box5Ref}
+                className={`p-12 rounded-[15px] h-[135px] font-peyda-medium w-[125px] transition-all duration-500 ease-in-out
+    ${isActive5 ? "bg-[#253b8e] text-white" : "bg-[#dee2ec] text-[#253B8E]"}`}
+              >
+                <span className="h-[800]  text-[40px] font-extrabold font-peyda-bold">
+                  05
+                </span>
+              </div>
+
+              <div className="h-[600] border-2 border-white rounded-tl-[31px] rounded-bl-[31px] shadow-[0_16px_32px_0_#2B37421A] p-2 w-[50%]  pr-6">
+                <span className="font-extrabold font-peyda-bold text-[17px] ">
+                  دریافت گواهینامه
+                </span>
+                <br />
+                <span className="text-[14px] bg-red h-[115px] font-peyda-medium text-gray-500 ">
+                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                  با استفاده از طراحان گرافیک است.
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center  justify-self-center ml-auto min-w-[770px]  max-w-[770px] relative right-[75px]">
+              <div className="h-[600] border-2 border-white rounded-tr-[31px] rounded-br-[31px] shadow-[0_16px_32px_0_#2B37421A] p-2 w-[50%]  pr-6">
+                <span className="font-extrabold font-peyda-bold text-[17px] ">
+                  ارتباط با تیم پشتیبانی
+                </span>
+                <br />
+                <span className="text-[14px] bg-red h-[115px] font-peyda-medium text-gray-500 ">
+                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                  با استفاده از طراحان گرافیک است.
+                </span>
+              </div>
+
+              <div
+                ref={box6Ref}
+                className={`p-12 rounded-[15px] h-[135px] font-peyda-medium w-[125px] transition-all duration-500 ease-in-out
+    ${isActive6 ? "bg-[#253b8e] text-white " : "bg-[#dee2ec] text-[#253B8E]"}`}
+              >
+                <span className="h-[800]  text-[40px] font-extrabold font-peyda-bold">
+                  06
+                </span>
+              </div>
+              <span className="border-2 border-white rounded-tl-[31px] rounded-bl-[31px] shadow-[0_16px_32px_0_#2B37421A] h-[115px] w-[15%] flex items-center justify-center">
+                <img src="/svg/package.svg" className="" alt="h-[400]" />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center justify-center pt-30 pb-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="20"
+          viewBox="0 0 32 20"
+          fill="none"
+        >
+          <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
+          <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
+        </svg>
+        <h1 className=" text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
+          جدیدترین مقالات
+        </h1>
+        <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
+          لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
+        </p>
+      </div>
+
+      <div className="w-[70%] flex relative mt-10 h-full mb-10">
+        <button
+          className="swiper-button-prev absolute !left-[-50px]  -translate-y-1/2 z-10 p-2  text-white rounded-full
+          rounded-[50px] border border-white 
+         bg-gradient-to-b from-[#f5f6f7] to-[#ffffff] 
+         transition ease-in-out duration-300 
+         pt-[10px] pr-[7px] pb-[7px] pl-[7px]
+        "
+        >
+          <GrFormPrevious />
+        </button>
+        <button className="swiper-button-next  absolute !right-[-50px] -translate-y-1/2 z-10 p-2  text-white rounded-full   bg-gradient-to-b from-[#f5f6f7] to-[#ffffff]">
+          <GrFormNext />
+        </button>
+        <Swiper
+          className="w-full h-[500px]"
+          slidesPerView={4} // نمایش ۳ اسلاید در یک بار
+          spaceBetween={25} // فاصله بین اسلایدها
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          grabCursor={true} // فعال‌سازی قابلیت کشیدن اسلاید
+          loop={true}
+          onSlideChange={triggerAnimation}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          modules={[Navigation]}
+        >
+          <SwiperSlide>
+            <div className="flex flex-col items-center bg-white   rounded-[24px] border-2 border-white bg-white shadow-[0_25px_34px_0_rgba(43,55,66,0.1)] transition-all duration-300 ease-in">
+              <div className="w-full flex justify-around pt-4">
+                <img
+                  src="/image/slider-section3-1.jpg"
+                  className="rounded-2xl w-[85%]"
+                  alt=""
+                />
+                <div className="flex absolute p-[10px] pr-[85px]  gap-2">
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[12px] font-normal not-italic">
+                    ابزار برقی
+                  </span>
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[12px] font-normal not-italic">
+                    ابزار دستی
+                  </span>
+
+                  <span className=" font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[12px] font-normal not-italic">
+                    ابزار صنعتی
+                  </span>
+                </div>
+              </div>
+              <div className="pr-5 pl-4 pt-3">
+                <span className="font-peyda-bold text-[15px] text-gray-500">
+                  مقایسه دریل شارژی در سال 2025
+                </span>
+                <br />
+                <span className="font-peyda-bold text-[12px] text-gray-500 leading-7 text-justify">
+                  چگونه ابزار مناسب کار خود را انتخاب کنیم؟ انتخاب ابزار مناسب
+                  یکی از مهم‌ترین عوامل برای بهبود کارایی و دقت در هر...
+                </span>
+              </div>
+
+              <div className="flex items-center justify-end font-peyda-bold  text-gray-500 w-full pl-4 pb-2">
+                <LuMessageSquareText className="text-[20px]" />
+                <span className="text-[13px] pr-1">0 نظر</span>
+              </div>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="flex flex-col items-center bg-white rounded-[24px] border-2 border-white bg-white shadow-[0_25px_34px_0_rgba(43,55,66,0.1)] transition-all duration-300 ease-in">
+              <div className="w-full flex justify-around pt-4">
+                <img
+                  src="/image/slider-section3-2.jpg"
+                  className="rounded-2xl w-[85%]"
+                  alt=""
+                />
+                <div className="flex absolute p-[10px] pr-[85px]  gap-2">
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار برقی
+                  </span>
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic">
+                    ابزار دستی
+                  </span>
+
+                  <span className=" font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic">
+                    ابزار صنعتی
+                  </span>
+                </div>
+              </div>
+              <div className="pr-5 pl-4 pt-3">
+                <span className="font-peyda-bold text-[15px] text-gray-500">
+                  راهنمای خرید ابزار برای مبتدیان
+                </span>
+                <br />
+                <span className="font-peyda-bold text-[12px] text-gray-500 leading-7 text-justify">
+                  چگونه ابزار مناسب کار خود را انتخاب کنیم؟ انتخاب ابزار مناسب
+                  یکی از مهم‌ترین عوامل برای بهبود کارایی و دقت در هر...
+                </span>
+              </div>
+
+              <div className="flex items-center justify-end font-peyda-bold  text-gray-500 w-full pl-4 pb-2">
+                <LuMessageSquareText className="text-[20px]" />
+                <span className="text-[13px] pr-1">0 نظر</span>
+              </div>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="flex flex-col items-center bg-white rounded-[24px] border-2 border-white bg-white shadow-[0_25px_34px_0_rgba(43,55,66,0.1)] transition-all duration-300 ease-in">
+              <div className="w-full flex justify-around pt-4">
+                <img
+                  src="/image/slider-section3-3.jpg"
+                  className="rounded-2xl w-[85%]"
+                  alt=""
+                />
+                <div className="flex absolute p-[10px] pr-[85px]  gap-2">
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار برقی
+                  </span>
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار دستی
+                  </span>
+
+                  <span className=" font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار صنعتی
+                  </span>
+                </div>
+              </div>
+              <div className="pr-5 pl-4 pt-3">
+                <span className="font-peyda-bold text-[15px] text-gray-500">
+                  ابزار ضروری که هر کارگاه باید داشت
+                </span>
+                <br />
+                <span className="font-peyda-bold text-[12px] text-gray-500 leading-7 text-justify">
+                  چگونه ابزار مناسب کار خود را انتخاب کنیم؟ انتخاب ابزار مناسب
+                  یکی از مهم‌ترین عوامل برای بهبود کارایی و دقت در هر...
+                </span>
+              </div>
+
+              <div className="flex items-center justify-end font-peyda-bold  text-gray-500 w-full pl-4 pb-2">
+                <LuMessageSquareText className="text-[20px]" />
+                <span className="text-[13px] pr-1">0 نظر</span>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex flex-col items-center bg-white rounded-[24px] border-2 border-white bg-white shadow-[0_25px_34px_0_rgba(43,55,66,0.1)] transition-all duration-300 ease-in">
+              <div className="w-full flex justify-around pt-4">
+                <img
+                  src="/image/slider-section3-1.jpg"
+                  className="rounded-2xl w-[85%]"
+                  alt=""
+                />
+                <div className="flex absolute p-[10px] pr-[85px]  gap-2">
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار برقی
+                  </span>
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار دستی
+                  </span>
+
+                  <span className=" font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic">
+                    ابزار صنعتی
+                  </span>
+                </div>
+              </div>
+              <div className="pr-5 pl-4 pt-3">
+                <span className="font-peyda-bold text-[15px] text-gray-500">
+                  مقایسه دریل شارژی در سال 2025
+                </span>
+                <br />
+                <span className="font-peyda-bold text-[12px] text-gray-500 leading-7 text-justify">
+                  چگونه ابزار مناسب کار خود را انتخاب کنیم؟ انتخاب ابزار مناسب
+                  یکی از مهم‌ترین عوامل برای بهبود کارایی و دقت در هر...
+                </span>
+              </div>
+
+              <div className="flex items-center justify-end font-peyda-bold  text-gray-500 w-full pl-4 pb-2">
+                <LuMessageSquareText className="text-[20px]" />
+                <span className="text-[13px] pr-1">0 نظر</span>
+              </div>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="flex flex-col items-center bg-white rounded-[24px] border-2 border-white bg-white shadow-[0_25px_34px_0_rgba(43,55,66,0.1)] transition-all duration-300 ease-in">
+              <div className="w-full flex justify-around pt-4">
+                <img
+                  src="/image/slider-section3-2.jpg"
+                  className="rounded-2xl w-[85%]"
+                  alt=""
+                />
+                <div className="flex absolute p-[10px] pr-[85px]  gap-2">
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار برقی
+                  </span>
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار دستی
+                  </span>
+
+                  <span className=" font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار صنعتی
+                  </span>
+                </div>
+              </div>
+              <div className="pr-5 pl-4 pt-3">
+                <span className="font-peyda-bold text-[15px] text-gray-500">
+                  راهنمای خرید ابزار برای مبتدیان
+                </span>
+                <br />
+                <span className="font-peyda-bold text-[12px] text-gray-500 leading-7 text-justify">
+                  چگونه ابزار مناسب کار خود را انتخاب کنیم؟ انتخاب ابزار مناسب
+                  یکی از مهم‌ترین عوامل برای بهبود کارایی و دقت در هر...
+                </span>
+              </div>
+
+              <div className="flex items-center justify-end font-peyda-bold  text-gray-500 w-full pl-4 pb-2">
+                <LuMessageSquareText className="text-[20px]" />
+                <span className="text-[13px] pr-1">0 نظر</span>
+              </div>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="flex flex-col items-center bg-white rounded-[24px] border-2 border-white bg-white shadow-[0_25px_34px_0_rgba(43,55,66,0.1)] transition-all duration-300 ease-in">
+              <div className="w-full flex justify-around pt-4">
+                <img
+                  src="/image/slider-section3-3.jpg"
+                  className="rounded-2xl w-[85%]"
+                  alt=""
+                />
+                <div className="flex absolute p-[10px] pr-[85px]  gap-2">
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار برقی
+                  </span>
+                  <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار دستی
+                  </span>
+
+                  <span className=" font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                    ابزار صنعتی
+                  </span>
+                </div>
+              </div>
+              <div className="pr-5 pl-4 pt-3">
+                <span className="font-peyda-bold text-[15px] text-gray-500">
+                  ابزار ضروری که هر کارگاه باید داشت
+                </span>
+                <br />
+                <span className="font-peyda-bold text-[12px] text-gray-500 leading-7 text-justify">
+                  چگونه ابزار مناسب کار خود را انتخاب کنیم؟ انتخاب ابزار مناسب
+                  یکی از مهم‌ترین عوامل برای بهبود کارایی و دقت در هر...
+                </span>
+              </div>
+
+              <div className="flex items-center justify-end font-peyda-bold  text-gray-500 w-full pl-4 pb-2">
+                <LuMessageSquareText className="text-[20px]" />
+                <span className="text-[13px] pr-1">0 نظر</span>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+
+      <div className="w-[70%] flex flex-col">
+        <div className="w-full flex justify-between items-center">
+          <h1 className=" text-[25px] font-extrabold font-peyda-medium text-[#253B8E]">
+            مجله خبری آریا
+          </h1>
+          <button
+            className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] 
+             text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out"
+          >
+            مشاهده همه محصولات
+          </button>
+        </div>
+
+        <div className="flex  pt-7">
+          <div className="w-[40%] rounded-2xl flex flex-col justify-between bg-[linear-gradient(183deg,rgba(28,48,121,0.21)_17.39%,rgba(23,41,105,0.48)_69.29%),url('https://aria-code.ir/aria/wp-content/uploads/2025/02/single-post-image.jpg')] bg-cover bg-center bg-no-repeat">
+            <span className="w-[19%] m-5 self-end p-0.5 font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic">
+              دسته بندی نشده
+            </span>
+            <div className="p-6">
+              <span className="text-white font-peyda-medium text-[20px]">
+                سلام دنیا!
+              </span>
+              <br />
+              <span className="text-white font-peyda-medium text-[13px]">
+                به وردپرس خوش آمدید. این اولین نوشتهٔ شماست. این را ویرایش یا
+                حذف کنید، سپس...
+              </span>
+            </div>
+          </div>
+          <div className="w-[25%]  flex flex-col items-center bg-white rounded-[24px] border-2 border-white bg-white shadow-[0_25px_34px_0_rgba(43,55,66,0.1)] transition-all duration-300 ease-in">
+            <div className="w-full flex justify-around pt-4">
+              <img
+                src="/image/slider-section3-3.jpg"
+                className="rounded-2xl w-[85%]"
+                alt=""
+              />
+              <div className="flex absolute p-[10px] pr-[85px]  gap-2">
+                <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                  ابزار برقی
+                </span>
+                <span className="font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                  ابزار دستی
+                </span>
+
+                <span className=" font-peyda-medium rounded bg-[#fed128] shadow-[0_4px_8px_0_rgba(254,209,40,0.17)] text-[#253b8e] text-center text-[13px] font-normal not-italic ">
+                  ابزار صنعتی
+                </span>
+              </div>
+            </div>
+            <div className="pr-5 pl-4 pt-3">
+              <span className="font-peyda-bold text-[15px] text-gray-500">
+                ابزار ضروری که هر کارگاه باید داشت
+              </span>
+              <br />
+              <span className="font-peyda-bold text-[12px] text-gray-500 leading-7 text-justify">
+                چگونه ابزار مناسب کار خود را انتخاب کنیم؟ انتخاب ابزار مناسب یکی
+                از مهم‌ترین عوامل برای بهبود کارایی و دقت در هر...
+              </span>
+            </div>
+
+            <div className="flex items-center justify-end font-peyda-bold  text-gray-500 w-full pl-4 pb-2">
+              <LuMessageSquareText className="text-[20px]" />
+              <span className="text-[13px] pr-1">0 نظر</span>
+            </div>
+          </div>
+
+          <div className="flex w-[35%] flex-col gap-4 ">
+            <div className="flex flex-col rounded-[24px] bg-[#f9f9f9] p-[10px]">
+              <div className="flex items-center">
+                <img
+                  src="/image/slider-section3-3.jpg"
+                  className="rounded-2xl w-[25%] h-[113px]"
+                  alt=""
+                />
+                <div className="flex flex-col justify-between w-[75%] h-full ">
+                  <span className="font-peyda-medium text-[14px] text-gray-600 pt-[45px] pr-[14px]">
+                    راهنمای هنگام کار با ابزارهای برقی
+                  </span>
+                  <div className="flex justify-end items-center">
+                    <div className="flex items-center justify-end font-peyda-bold  text-gray-400  pl-1 pb-2">
+                      <LuMessageSquareText className="text-[20px]" />
+                      <span className="text-[13px] pr-1">0 نظر</span>
+                    </div>
+                    <div className="flex items-center justify-end font-peyda-bold  text-gray-400  pl-1 pb-2">
+                      <BsPersonCheck className="text-[19px]" />
+                      <span className="text-[13px] pr-1">محمد مهدی عزیزی</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col rounded-[24px] bg-[#f9f9f9] p-[10px]">
+              <div className="flex items-center">
+                <img
+                  src="/image/slider-section3-1.jpg"
+                  className="rounded-2xl w-[25%] h-[113px]"
+                  alt=""
+                />
+                <div className="flex flex-col justify-between w-[75%] h-full ">
+                  <span className="font-peyda-medium text-[14px] text-gray-600 pt-[45px] pr-[14px]">
+                    راهنمای هنگام کار با ابزارهای برقی
+                  </span>
+                  <div className="flex justify-end items-center">
+                    <div className="flex items-center justify-end font-peyda-bold  text-gray-400  pl-1 pb-2">
+                      <LuMessageSquareText className="text-[20px]" />
+                      <span className="text-[13px] pr-1">0 نظر</span>
+                    </div>
+                    <div className="flex items-center justify-end font-peyda-bold  text-gray-400  pl-1 pb-2">
+                      <BsPersonCheck className="text-[19px]" />
+                      <span className="text-[13px] pr-1">محمد مهدی عزیزی</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col rounded-[24px] bg-[#f9f9f9] p-[10px]">
+              <div className="flex items-center">
+                <img
+                  src="/image/slider-section3-3.jpg"
+                  className="rounded-2xl w-[25%] h-[113px]"
+                  alt=""
+                />
+                <div className="flex flex-col justify-between w-[75%] h-full ">
+                  <span className="font-peyda-medium text-[14px] text-gray-600 pt-[45px] pr-[14px]">
+                    راهنمای هنگام کار با ابزارهای برقی
+                  </span>
+                  <div className="flex justify-end items-center">
+                    <div className="flex items-center justify-end font-peyda-bold  text-gray-400  pl-1 pb-2">
+                      <LuMessageSquareText className="text-[20px]" />
+                      <span className="text-[13px] pr-1">0 نظر</span>
+                    </div>
+                    <div className="flex items-center justify-end font-peyda-bold  text-gray-400  pl-1 pb-2">
+                      <BsPersonCheck className="text-[19px]" />
+                      <span className="text-[13px] pr-1">محمد مهدی عزیزی</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
