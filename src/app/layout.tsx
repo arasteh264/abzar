@@ -35,7 +35,7 @@ export default function RootLayout({
           <header className=" bg-[#253B8E] pt-4 items-center w-full flex justify-center">
             <Header />
           </header>
-            <div className="w-full sticky top-[0px] z-50 bg-[#253B8E] flex justify-center pt-9 pb-7">
+            <div className="w-full sticky -top-[9px] z-50 bg-[#253B8E] sm:flex justify-center pt-9 pb-7 hidden">
     <MenuSection />
   </div>
         <main className="pb-[80px]">
@@ -47,7 +47,7 @@ export default function RootLayout({
 
           {children}
           </main>
-          <footer className="w-full flex flex-col items-center pt-8">
+          <footer className="hidden w-full sm:flex sm:flex-col items-center pt-8">
             <div className="h-[1px] w-full bg-[#eeeeee] relative top-[80px] -z-1"></div>
             <FooterPage/>
             <div className="w-full">

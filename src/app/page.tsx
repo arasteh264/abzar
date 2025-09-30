@@ -74,9 +74,9 @@ export default function Home() {
 
   return (
     <div className="font-sans  w-full  flex flex-col items-center  text-black text-2xl">
-      <div className="flex   items-start justify-between w-full text-white backgound-homepage h-[80vh] pt-[75px]">
-        <div className="w-[70%] mx-auto flex flex-col lg:flex-row items-center justify-between">
-          <div className="flex flex-col items-start ">
+      <div className="flex   items-start justify-between w-full text-white backgound-homepage h-[80vh] sm:pt-[75px] pt-[20px]">
+        <div className="w-full sm:w-[70%] mx-auto flex flex-col lg:flex-row items-center justify-between">
+          <div className="flex flex-col sm:items-start items-center ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -87,10 +87,10 @@ export default function Home() {
               <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
               <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
             </svg>
-            <span className=" font-peyda-bold text-4xl pt-5">
+            <span className="font-peyda-bold text-[23px] sm:text-4xl sm:pt-5  pt-6 sm:pt-0">
               بزرگترین تولید کننده قطعات الکتریکی
             </span>
-            <p className="text-[16px] pt-6 font-peyda-medium">
+            <p className="text-[16px] pt-6 font-peyda-medium text-center">
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ است ...
             </p>
             <div className="flex items-center pt-8">
@@ -125,7 +125,7 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <div className="flex items-center pt-7 mainSlider">
+          <div className="hidden sm:flex sm:items-center sm:pt-7 mainSlider">
             <div className="at-image-container-b">
               <div className="at-ring"></div>
               <div className="at-ring"></div>
@@ -309,7 +309,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="w-[70%] flex items-center justify-between pb-20">
+      <div className="hidden sm:w-[70%] sm:flex sm:items-center sm:justify-between sm:pb-20">
         <div
           className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-8 ml-6 
                 hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222]"
@@ -654,7 +654,7 @@ export default function Home() {
             کرد.
           </span>
 
-          <div className="flex w-[100%] flex-col pt-8">
+          <div className="hidden sm:flex sm:w-[100%] sm:flex-col sm:pt-8">
             <div className="flex justify-between w-[100%]">
               <div className="flex">
                 <span className=" pl-1.5">
@@ -2501,7 +2501,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="w-[88%] flex flex-col items-center">
+      <div className="hidden sm:w-[88%] sm:flex sm:flex-col sm:items-center ">
         <div className="w-[62%] ">
           <div className="inlineSection-part w-full flex flex-col justify-between gap-[2rem] items-center ">
             <div className="flex items-center justify-self-end mr-auto min-w-[770px] max-w-[770px] relative -left-[77px]">
