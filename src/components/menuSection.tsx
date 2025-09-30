@@ -131,8 +131,8 @@ export default function MenuSection() {
   }, []);
 
   return (
-    <div className="MenuSection bg-[#253e8b] flex items-center w-[70%] justify-between font-peyda-medium">
-      <NavigationMenu viewport={false} className="flex-1">
+    <div className="MenuSection bg-[#253e8b] flex items-center w-[70%] justify-between font-peyda-medium ">
+      <NavigationMenu viewport={false} className="flex-1 ">
         <NavigationMenuList className="flex items-center gap-4">
           {/* دسته بندی محصولات */}
           <NavigationMenuItem className="relative">
@@ -256,7 +256,7 @@ export default function MenuSection() {
                         fill="transparent"
                       >
                         <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z"></path>
-                      </svg>
+                      </svg >
                     </span>
                     <span className="text-gray-500 transition-colors duration-300">
                       دریل، پیچ گوشتی، آچار بکس
@@ -650,24 +650,30 @@ export default function MenuSection() {
           </NavigationMenuItem>
 
           {/* فروشگاه */}
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="flex items-center gap-1 text-white font-medium">
-              <img src="/svg/basket.svg" alt="" /> فروشگاه
-            </NavigationMenuTrigger>
-            <NavigationMenuContent className="absolute top-full right-0 origin-top-right w-[400px] md:w-[500px] lg:w-[600px] bg-[#253B8E] rounded-md shadow-lg p-4">
-              <ul className="grid gap-2 md:grid-cols-2">
-                {shopItems.map((item) => (
-                  <ListItem
-                    key={item.title}
-                    title={item.title}
-                    href={item.href}
-                  >
-                    {item.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
+           <NavigationMenuItem>
+          <NavigationMenuTrigger>فروشگاه</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[200px] gap-5 right-0 ">
+              <li>
+                <NavigationMenuLink asChild>
+                  <Link href="#">پروفایل کاربر</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="#">فروشگاه</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="#">انواع محصمل</Link>
+                </NavigationMenuLink>
+                       <NavigationMenuLink asChild>
+                  <Link href="#">تسویه حساب</Link>
+                </NavigationMenuLink>
+                       <NavigationMenuLink asChild>
+                  <Link href="#">سبد خرید</Link>
+                </NavigationMenuLink>
+              </li>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
 
           {/* سایر آیتم‌ها */}
           <NavigationMenuItem>
