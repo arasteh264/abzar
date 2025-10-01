@@ -7,7 +7,7 @@ export default function header() {
   return (
 <div className="w-full flex flex-col items-center head-section">
   {/* هدر بالا */}
-  <section className="w-full sm:w-[80%] text-white h-auto md:h-20 flex flex-col md:flex-row items-center justify-between px-4 md:px-0 gap-4">
+  <section className="w-full sm:w-[80%]  text-white h-auto md:h-20 flex flex-col md:flex-row items-center justify-between px-4 md:px-0 gap-4">
     
     {/* لوگو */}
 
