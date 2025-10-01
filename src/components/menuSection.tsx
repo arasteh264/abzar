@@ -131,7 +131,7 @@ export default function MenuSection() {
   }, []);
 
   return (
-    <div className="MenuSection bg-[#253e8b] flex items-center w-[70%] justify-between font-peyda-medium ">
+    <div className="MenuSection bg-[#253e8b] flex items-center w-[80%] justify-between font-peyda-medium ">
       <NavigationMenu viewport={false} className="flex-1 ">
         <NavigationMenuList className="flex items-center gap-4">
           {/* دسته بندی محصولات */}
