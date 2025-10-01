@@ -7,16 +7,22 @@ export default function header() {
   return (
 <div className="w-full flex flex-col items-center head-section">
   {/* هدر بالا */}
-  <section className="w-full md:w-[70%] text-white h-auto md:h-20 flex flex-col md:flex-row items-center justify-between px-4 md:px-0 gap-4">
+  <section className="w-full sm:w-[80%] text-white h-auto md:h-20 flex flex-col md:flex-row items-center justify-between px-4 md:px-0 gap-4">
     
     {/* لوگو */}
-    <div className="w-full  flex justify-center justify-start">
+
+    {/* display: flex
+;
+    justify-content: space-between;
+    width: 100%; */}
+
+    <div className="w-[100%] sm:w-[30%]  flex justify-between sm:justify-center sm:justify-start">
       <img src="/svg/head-logo.svg" alt="head-logo" className="h-12 md:h-auto" />
-       <div className="flex sm:hidden   border-r border-[#FFFFFF38] pr-4">
+       <div className="flex sm:hidden    pr-4">
         <button className="bg-white rounded-full p-1.5">
           <img
             src="/svg/basket.svg"
-            className="bg-[#fed128] rounded-full p-1 h-7 w-7"
+            className="bg-[#fed128] rounded-full p-2 h-9 w-9"
             alt="basket"
           />
         </button>
@@ -24,8 +30,8 @@ export default function header() {
     </div>
 
     {/* فرم جستجو */}
-    <div className="w-full md:w-[50%] flex justify-center md:justify-start font-main">
-      <form className="bg-[#5064a2] border border-[#ffffff40] rounded-[50px] flex items-center w-full md:w-[98%] sm:px-4 sm:py-2 px-2  text-sm md:text-[16px] font-medium">
+    <div className="w-full sm:w-[50%] sm:flex sm:justify-center sm:justify-start font-main">
+      <form className="bg-[#5064a2] border border-[#ffffff40] rounded-[50px] flex items-center w-full w-[98%] sm:px-4 sm:py-2 px-2  text-sm text-[16px] font-medium">
         <button className="pl-2 text-[#d7dbea]">
           <ImSearch />
         </button>
@@ -49,7 +55,7 @@ export default function header() {
         <button className="bg-white rounded-full p-1.5">
           <img
             src="/svg/basket.svg"
-            className="bg-[#fed128] rounded-full p-1 h-7 w-7"
+            className="bg-[#fed128] rounded-full p-1 h-10 w-10"
             alt="basket"
           />
         </button>

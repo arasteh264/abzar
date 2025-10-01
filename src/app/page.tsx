@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <div className="font-sans  w-full  flex flex-col items-center  text-black text-2xl">
       <div className="flex   items-start justify-between w-full text-white backgound-homepage h-[80vh] sm:pt-[75px] pt-[20px]">
-        <div className="w-full sm:w-[70%] mx-auto flex flex-col lg:flex-row items-center justify-between">
+        <div className="w-full sm:w-[80%] mx-auto flex flex-col lg:flex-row items-center justify-between">
           <div className="flex flex-col sm:items-start items-center ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -309,7 +309,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="hidden sm:w-[70%] sm:flex sm:items-center sm:justify-between sm:pb-20">
+      <div className="hidden sm:w-[80%] sm:flex sm:items-center sm:justify-between sm:pb-20">
         <div
           className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-8 ml-6 
                 hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222]"
@@ -592,7 +592,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[70%] flex items-center justify-between pb-20">
+      <div className="w-[80%] flex items-center justify-between pb-20">
         <div className="w-[50%]">
           <img src="/image/main-image1.png" alt="" />
           <div
@@ -813,7 +813,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="w-[70%]">
+      <div className="w-[80%]">
         <Swiper
           className="w-full h-[440px]"
           slidesPerView={3.8} // نمایش ۳ اسلاید در یک بار
@@ -1289,7 +1289,7 @@ export default function Home() {
         مشاهده همه پروژه ها
       </button>
 
-      <div className="w-[70%] h-[148px] bg-[#253B8E] bg-opacity-0 flex justify-between rounded-[20px] pr-7  mt-30">
+      <div className="w-[80%] h-[148px] bg-[#253B8E] bg-opacity-0 flex justify-between rounded-[20px] pr-7  mt-30">
         <div className="flex items-center">
           <div>
             <h1 className="font-peyda-medium text-[25px] text-white">
@@ -1341,7 +1341,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className=" w-[70%]  flex  relative mt-10 h-full mb-10">
+      <div className=" w-[80%]  flex  relative mt-10 h-full mb-10">
         <button
           className="swiper-button-prev absolute !left-[-50px]  -translate-y-1/2 z-10 p-2  text-white rounded-full
           rounded-[50px] border border-white 
@@ -1921,7 +1921,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className=" w-[70%]  flex  relative mt-10 h-full mb-10">
+      <div className=" w-[80%]  flex  relative mt-10 h-full mb-10">
         <button
           className="swiper-button-prev absolute !left-[-50px]  -translate-y-1/2 z-10 p-2  text-white rounded-full
           rounded-[50px] border border-white 
@@ -2685,7 +2685,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="w-[70%] flex relative mt-10 h-full mb-10">
+      <div className="w-[80%] flex relative mt-10 h-full mb-10">
         <button
           className="swiper-button-prev absolute !left-[-50px]  -translate-y-1/2 z-10 p-2  text-white rounded-full
           rounded-[50px] border border-white 
@@ -2951,7 +2951,7 @@ export default function Home() {
         </Swiper>
       </div>
 
-      <div className="w-[70%] flex flex-col">
+      <div className="w-[80%] flex flex-col">
         <div className="w-full flex justify-between items-center">
           <h1 className=" text-[25px] font-extrabold font-peyda-medium text-[#253B8E]">
             مجله خبری آریا

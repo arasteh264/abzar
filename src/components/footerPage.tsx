@@ -4,7 +4,7 @@ import { LiaShareAltSolid } from "react-icons/lia";
 import { FaInstagram } from "react-icons/fa";
 export default function footerPage() {
   return (
-    <section className="flex flex-col text-black   gap-4 w-[70%] flex justify-between ">
+    <section className="flex flex-col text-black   gap-4 w-[80%] flex justify-between ">
       <div className="flex items-center text-black pt-3  gap-4 w-full flex justify-between bg-gradient-to-b from-[#F5F6F7] to-white shadow-2xl rounded-[28px]">
         <div className="flex items-center text-black pt-3  ">
           <p className=" text-[#1c3377]  text-[20px] leading-[30px] pr-7">
