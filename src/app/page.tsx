@@ -12,6 +12,25 @@ import { RxCross2 } from "react-icons/rx";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { LuMessageSquareText } from "react-icons/lu";
+type SuccessfulProject = {
+  title: string;
+  link: string;
+  image:string;
+  icon: ReactNode;
+    features: {
+    duration: string,
+    subject: string,
+    customQuantity:string,
+    }
+};
+
+  type Feature = {
+    id?:   number | null;
+    title: string;
+    icon: ReactNode;
+    link: string;
+  };
+
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,195 +47,290 @@ export default function Home() {
   const [isActive4, setIsActive4] = useState(false);
   const [isActive5, setIsActive5] = useState(false);
   const [isActive6, setIsActive6] = useState(false);
-type Feature = {
-  id: number;
-  title: string;
-  icon: ReactNode;
-  link: string;
-};
-const features:Feature []= [
-  {
-    title: "تولید انبوه محصولات",
-    icon: (  <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 48 48"
-              fill="none"
-            >
-              <g opacity="0.5">
-                <path
-                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-                  fill="white"
-                ></path>
-              </g>
-              <path
-                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-                fill="white"
-              ></path>
-              <path
-                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-                fill="white"
-              ></path>
-              <path
-                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-                fill="white"
-              ></path>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-                fill="white"
-              ></path>
-            </svg>),
-    link: "#"
-  },
-  {
-    title: "پشتیبانی دائمی",
-       icon: (  <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 48 48"
-              fill="none"
-            >
-              <g opacity="0.5">
-                <path
-                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-                  fill="white"
-                ></path>
-              </g>
-              <path
-                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-                fill="white"
-              ></path>
-              <path
-                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-                fill="white"
-              ></path>
-              <path
-                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-                fill="white"
-              ></path>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-                fill="white"
-              ></path>
-            </svg>),
-    link: "#"
-  },
-  {
-    title: "گارانتی ویژه محصولات",
-       icon: (  <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 48 48"
-              fill="none"
-            >
-              <g opacity="0.5">
-                <path
-                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-                  fill="white"
-                ></path>
-              </g>
-              <path
-                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-                fill="white"
-              ></path>
-              <path
-                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-                fill="white"
-              ></path>
-              <path
-                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-                fill="white"
-              ></path>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-                fill="white"
-              ></path>
-            </svg>),
-    link: "#"
-  },
-  {
-    title: "محصولاتی با کیفیت بالا",
-       icon: (  <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 48 48"
-              fill="none"
-            >
-              <g opacity="0.5">
-                <path
-                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-                  fill="white"
-                ></path>
-              </g>
-              <path
-                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-                fill="white"
-              ></path>
-              <path
-                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-                fill="white"
-              ></path>
-              <path
-                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-                fill="white"
-              ></path>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-                fill="white"
-              ></path>
-            </svg>),
-    link: "#"
-  },
-  {
-    title: "30 روز بازگشت وجه",
-       icon: (  <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 48 48"
-              fill="none"
-            >
-              <g opacity="0.5">
-                <path
-                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-                  fill="white"
-                ></path>
-              </g>
-              <path
-                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-                fill="white"
-              ></path>
-              <path
-                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-                fill="white"
-              ></path>
-              <path
-                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-                fill="white"
-              ></path>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-                fill="white"
-              ></path>
-            </svg>),
-    link: "#"
-  }
-];
 
+  // ایدی رو به صورت اختیاری تعریف کردم 
+  const features: Feature[] = [
+    {
+      title: "تولید انبوه محصولات",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 48 48"
+          fill="none"
+        >
+          <g opacity="0.5">
+            <path
+              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+              fill="white"
+            ></path>
+          </g>
+          <path
+            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+            fill="white"
+          ></path>
+          <path
+            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+            fill="white"
+          ></path>
+          <path
+            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+            fill="white"
+          ></path>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+            fill="white"
+          ></path>
+        </svg>
+      ),
+      link: "#",
+    },
+    {
+      title: "پشتیبانی دائمی",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 48 48"
+          fill="none"
+        >
+          <g opacity="0.5">
+            <path
+              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+              fill="white"
+            ></path>
+          </g>
+          <path
+            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+            fill="white"
+          ></path>
+          <path
+            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+            fill="white"
+          ></path>
+          <path
+            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+            fill="white"
+          ></path>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+            fill="white"
+          ></path>
+        </svg>
+      ),
+      link: "#",
+    },
+    {
+      title: "گارانتی ویژه محصولات",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 48 48"
+          fill="none"
+        >
+          <g opacity="0.5">
+            <path
+              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+              fill="white"
+            ></path>
+          </g>
+          <path
+            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+            fill="white"
+          ></path>
+          <path
+            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+            fill="white"
+          ></path>
+          <path
+            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+            fill="white"
+          ></path>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+            fill="white"
+          ></path>
+        </svg>
+      ),
+      link: "#",
+    },
+    {
+      title: "محصولاتی با کیفیت بالا",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 48 48"
+          fill="none"
+        >
+          <g opacity="0.5">
+            <path
+              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+              fill="white"
+            ></path>
+          </g>
+          <path
+            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+            fill="white"
+          ></path>
+          <path
+            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+            fill="white"
+          ></path>
+          <path
+            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+            fill="white"
+          ></path>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+            fill="white"
+          ></path>
+        </svg>
+      ),
+      link: "#",
+    },
+    {
+      title: "30 روز بازگشت وجه",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 48 48"
+          fill="none"
+        >
+          <g opacity="0.5">
+            <path
+              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+              fill="white"
+            ></path>
+          </g>
+          <path
+            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+            fill="white"
+          ></path>
+          <path
+            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+            fill="white"
+          ></path>
+          <path
+            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+            fill="white"
+          ></path>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+            fill="white"
+          ></path>
+        </svg>
+      ),
+      link: "#",
+    },
+  ];
+const successfulProjects: SuccessfulProject[] = [
+  {
+    title: "پروژه ساخت دریل بتنی",
+    link: "https://aria-code.ir/aria/projects/xsd/",
+    icon: <GoArrowLeft />,
+    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg",
+    features: {
+      duration: "7 ماه",
+      subject: "ساخت و تولید",
+      customQuantity: "سفارشی دوم",
+    },
+  },
+  {
+    title: "پروژه طراحی خط تولید",
+    link: "https://aria-code.ir/aria/projects/xsd-copy/",
+    icon: <GoArrowLeft />,
+    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/tooling-services-main-2023.jpg",
+    features: {
+      duration: "2 سال",
+      subject: "خط تولید",
+      customQuantity: "سفارشی دوم",
+    },
+  },
+   {
+    title: "پروژه طراحی خط تولید",
+    link: "https://aria-code.ir/aria/projects/xsd-copy/",
+    icon: <GoArrowLeft />,
+    image: "/image/slider-section3-4.jpg",
+    features: {
+      duration: "2 سال",
+      subject: "خط تولید",
+      customQuantity: "سفارشی دوم",
+    },
+  },
+  {
+    title: "پروژه ساخت دریل بتنی",
+    link: "https://aria-code.ir/aria/projects/xsd/",
+    icon: <GoArrowLeft />,
+    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg",
+    features: {
+      duration: "7 ماه",
+      subject: "ساخت و تولید",
+      customQuantity: "سفارشی دوم",
+    },
+  },
+  {
+    title: "همکاری با شرکت برفاب",
+    link: "https://aria-code.ir/aria/projects/xsd-copy/",
+    icon: <GoArrowLeft />,
+    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/tooling-services-main-2023.jpg",
+    features: {
+      duration: "2 سال",
+      subject: "خط تولید",
+      customQuantity: "سفارشی دوم",
+    },
+  },
+   {
+    title: "همکاری با شرکت بنز",
+    link: "https://aria-code.ir/aria/projects/xsd-copy/",
+    icon: <GoArrowLeft />,
+    image: "/image/slider-section3-4.jpg",
+    features: {
+      duration: "2 سال",
+      subject: "خط تولید",
+      customQuantity: "سفارشی دوم",
+    },
+  },
+  {
+    title: "پروژه طراحی خط تولید",
+    link: "https://aria-code.ir/aria/projects/xsd-copy/",
+    icon: <GoArrowLeft />,
+    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/tooling-services-main-2023.jpg",
+    features: {
+      duration: "2 سال",
+      subject: "خط تولید",
+      customQuantity: "سفارشی دوم",
+    },
+  },
+    {
+    title: "همکاری با شرکت برفاب",
+    link: "https://aria-code.ir/aria/projects/xsd-copy/",
+    icon: <GoArrowLeft />,
+    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/tooling-services-main-2023.jpg",
+    features: {
+      duration: "2 سال",
+      subject: "خط تولید",
+      customQuantity: "سفارشی دوم",
+    },
+  },
+];
 
 
   const checkActive = (
@@ -501,128 +615,74 @@ const features:Feature []= [
       </div>
 
       <div className="hidden  sm:w-[80%] sm:flex sm:items-center sm:justify-between sm:pb-20">
- {features.map(item => (
-        <div
-          key={item.id}
-          className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] 
+        {features.map((item) => (
+          <div
+            key={item.id}
+            className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] 
                      shadow-[0_16px_32px_0_#2B37421A] p-8 ml-6 
                      hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222]"
-        >
-          <div
-            className="bg-[#253b8e] p-[17px] rounded-[50px] 
+          >
+            <div
+              className="bg-[#253b8e] p-[17px] rounded-[50px] 
                        group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-          >
-            {item.icon}
-          </div>
-
-          <span className="text-[16px] pt-6 font-peyda-bold text-[#253B8E] 
-                           group-hover:text-white transition-colors duration-300 ease-in-out">
-            {item.title}
-          </span>
-
-          <button
-            className="bg-[#efefef] p-[10px] leading-none rounded-[8px] mt-7 
-                       group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-          >
-            <GoArrowLeft
-              className="bg-[#253e8b] text-[#ffffff] rounded-[5px] w-[20px] h-[20px] 
-                         group-hover:bg-white group-hover:text-yellow-400 transition-colors duration-300 ease-in-out"
-            />
-          </button>
-        </div>
-      ))}
-
-
-        {/* <div
-          className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-8 ml-6 
-                hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222]"
-        >
-          <div
-            className="bg-[#253b8e] p-[17px] rounded-[50px] 
-                  group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 48 48"
-              fill="none"
             >
-              <g opacity="0.5">
-                <path
-                  d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-                  fill="white"
-                ></path>
-              </g>
-              <path
-                d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-                fill="white"
-              ></path>
-              <path
-                d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-                fill="white"
-              ></path>
-              <path
-                d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-                fill="white"
-              ></path>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-                fill="white"
-              ></path>
-            </svg>
+              {item.icon}
+            </div>
+
+            <span
+              className="text-[16px] pt-6 font-peyda-bold text-[#253B8E] 
+                           group-hover:text-white transition-colors duration-300 ease-in-out"
+            >
+              {item.title}
+            </span>
+
+            <button
+              className="bg-[#efefef] p-[10px] leading-none rounded-[8px] mt-7 
+                       group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+            >
+              <GoArrowLeft
+                className="bg-[#253e8b] text-[#ffffff] rounded-[5px] w-[20px] h-[20px] 
+                         group-hover:bg-white group-hover:text-yellow-400 transition-colors duration-300 ease-in-out"
+              />
+            </button>
           </div>
-
-          <span className="text-[16px] pt-6 font-peyda-bold text-[#253B8E] group-hover:text-white transition-colors duration-300 ease-in-out">
-            30 روز بازگشت وجه
-          </span>
-
-          <button
-            className="bg-[#efefef] p-[10px] leading-none rounded-[8px] mt-7 
-                     group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-          >
-            <GoArrowLeft
-              className="bg-[#253e8b] text-[#ffffff] rounded-[5px] w-[20px] h-[20px] 
-                 group-hover:bg-white group-hover:text-yellow-400 transition-colors duration-300 ease-in-out"
-            />
-          </button>
-        </div> */}
+        ))}
       </div>
-      
-<div className="sm:hidden w-full grid grid-cols-2 gap-4">
-  {features.map((item, index) => {
-    // کارت آخر بزرگ‌تر
-    const isLast = index === features.length - 1;
 
-    return (
-      <div
-        key={item.id}
-        className={`group flex flex-col items-center border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-6 
+      <div className="sm:hidden w-full grid grid-cols-2 gap-4">
+        {features.map((item, index) => {
+          // کارت آخر بزرگ‌تر
+          const isLast = index === features.length - 1;
+
+          return (
+            <div
+              key={item.id}
+              className={`group flex flex-col items-center border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-6 
                     hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222] transition-colors duration-300 ease-in-out
-                    ${isLast ? 'col-span-2 w-full' : ''}`}
-      >
-        <div className="bg-[#253b8e] p-[17px] rounded-[50px] group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out">
-          {item.icon}
-        </div>
-        <span className="text-[14px] pt-4 font-peyda-bold text-[#253B8E] group-hover:text-white transition-colors duration-300 ease-in-out">
-          {item.title}
-        </span>
-        <button className="bg-[#efefef] p-[10px] leading-none rounded-[8px] mt-4 group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out">
-          <GoArrowLeft className="bg-[#253e8b] text-[#ffffff] rounded-[5px] w-[20px] h-[20px] 
-                                 group-hover:bg-white group-hover:text-yellow-400 transition-colors duration-300 ease-in-out" />
-        </button>
+                    ${isLast ? "col-span-2 w-full" : ""}`}
+            >
+              <div className="bg-[#253b8e] p-[17px] rounded-[50px] group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out">
+                {item.icon}
+              </div>
+              <span className="text-[14px] pt-4 font-peyda-bold text-[#253B8E] group-hover:text-white transition-colors duration-300 ease-in-out">
+                {item.title}
+              </span>
+              <button className="bg-[#efefef] p-[10px] leading-none rounded-[8px] mt-4 group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out">
+                <GoArrowLeft
+                  className="bg-[#253e8b] text-[#ffffff] rounded-[5px] w-[20px] h-[20px] 
+                                 group-hover:bg-white group-hover:text-yellow-400 transition-colors duration-300 ease-in-out"
+                />
+              </button>
+            </div>
+          );
+        })}
       </div>
-    );
-  })}
-</div>
 
-{/* برای موبایل */}
-<div className="sm:hidden pt-12 pb-15">
-  <img src="/image/main-image1.png"  alt="" />
-    <div className="relative">
-          <div 
+      {/* برای موبایل */}
+      <div className="sm:hidden pt-12 pb-15">
+        <img src="/image/main-image1.png" alt="" />
+        <div className="relative">
+          <div
             className="bg-[url('/image/modal-image.png')] 
              bg-center bg-no-repeat bg-contain
              rounded-[20px] 
@@ -662,7 +722,7 @@ const features:Feature []= [
             </span>
           </div>
         </div>
-</div>
+      </div>
 
       <div className="w-full sm:w-[80%] flex items-center justify-between pb-20 pl-3 pr-3">
         <div className="hidden sm:flex sm:w-[70%]">
@@ -729,7 +789,7 @@ const features:Feature []= [
           <div className=" sm:flex sm:w-[100%] sm:flex-col sm:pt-8">
             <div className="flex sm:flex-row flex-col justify-between w-[100%] ">
               <div className="flex pt-6 sm:pt-0">
-                <span className=" pl-1.5">
+                <span className=" pl-1.5 pb-1.5 ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="22"
@@ -746,18 +806,21 @@ const features:Feature []= [
                   </svg>{" "}
                 </span>
                 <div className="flex flex-col w-full sm:width-[33%]">
-                  <h1 className="text-[16px] font-extrabold font-peyda-bold text-[#324db1]">
+                  <h1 className="text-[15px] font-extrabold font-peyda-bold text-[#324db1]">
                     تجهیزات و فناوری
                   </h1>
-                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                  <span className=" hidden sm:flex text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
                     کاهش هزینه‌ها و افزایش
                   </span>
-                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                  <span className="hidden sm:flex text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
                     سرعت تولید.
+                  </span>
+                  <span className="sm:hidden text-justify  text-[15px] pt-4 font-peyda-medium  text-gray-500">
+                    کاهش هزینه ها وافزایش سرعت تولید
                   </span>
                 </div>
               </div>
-              <div className="flex">
+              <div className="flex pt-6 sm:pt-0">
                 <span className=" pl-1.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -775,18 +838,21 @@ const features:Feature []= [
                   </svg>{" "}
                 </span>
                 <div className="flex flex-col width-[33%]">
-                  <h1 className="text-[16px] font-extrabold font-peyda-bold text-[#324db1]">
-                    تجهیزات و فناوری
+                  <h1 className="text-[15px] font-extrabold font-peyda-bold text-[#324db1]">
+                    مدیرت کیفیت
                   </h1>
-                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                  <span className=" hidden sm:flex text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
                     کاهش هزینه‌ها و افزایش
                   </span>
-                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                  <span className="hidden sm:flex text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
                     سرعت تولید.
+                  </span>
+                  <span className="sm:hidden text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                    دریافت گواهینامه‌های ISO و دیگر استانداردها.
                   </span>
                 </div>
               </div>
-              <div className="flex">
+              <div className="flex pt-6 sm:pt-0">
                 <span className=" pl-1.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -804,21 +870,25 @@ const features:Feature []= [
                   </svg>{" "}
                 </span>
                 <div className="flex flex-col width-[33%]">
-                  <h1 className="text-[16px] font-extrabold font-peyda-bold text-[#324db1]">
-                    تجهیزات و فناوری
+                  <h1 className="text-[15px] font-extrabold font-peyda-bold text-[#324db1]">
+                    توسعه وتحقیق
                   </h1>
-                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                  <span className=" hidden sm:flex text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
                     کاهش هزینه‌ها و افزایش
                   </span>
-                  <span className="text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                  <span className="hidden sm:flex text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
                     سرعت تولید.
+                  </span>
+                  <span className="sm:hidden text-justify  text-[14px] pt-4 font-peyda-medium text-gray-500">
+                    توجه به نیازهای بازار و طراحی محصولات جدید.
                   </span>
                 </div>
               </div>
             </div>
-            <div className="flex justify-between w-full items-center mt-7 border-t border-t-[#253B8E1A] border-b border-b-[#253B8E1A] pt-4 pb-4">
-              <div className="flex items-center">
-                <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-white font-peyda-medium bg-[#1a3175] hover:bg-[#FED128] hover:text-[#1a3175] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+
+            <div className="flex flex-col sm:flex-row sm:justify-between w-full items-center mt-7 border-t border-t-[#253B8E1A] border-b border-b-[#253B8E1A] pt-4 pb-4">
+              <div className="flex items-center w-full sm:w-auto ">
+                <button className="text-[13px]  sm:text-[15px]  pl-[28px] pt-[14px] pr-[30px] pb-[14px] sm:pl-[30px] text-white font-peyda-medium bg-[#1a3175] hover:bg-[#FED128] hover:text-[#1a3175] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
                   بیشتر بدانید
                 </button>
                 <span className="bg-[#FED128] text-white rounded-[50px] p-2.5  leading-none">
@@ -848,25 +918,30 @@ const features:Feature []= [
                   </svg>
                 </span>
               </div>
-              <div className="flex items-center w-[45%] justify-between">
-                <div className="flex flex-col items-center border-l border-l-[#253B8E1A] pl-8">
+              <div className="w-full sm:w-[45%] pt-5 sm:pt-0 flex items-center  justify-between">
+                <div className="flex flex-col items-center sm:border-l  border-l-[#253B8E1A] sm:pl-8">
                   <span className="text-[14px] text-[#253B8E7D] font-peyda-medium ">
                     مدیر عامل شرکت آریا تجارت:
                   </span>
-                  <span className="text-[16px] text-[#1a2e77] font-peyda-medium pt-3">
+                  <span className="text-[16px] text-[#1a2e77] font-peyda-medium pt-3 ">
                     مهنـدس محمدرضا برزگر
                   </span>
                 </div>
 
-                <div>
-                  <img src="/image/emza.png"  alt="" />
+                <div className="border-r  border-r-[#253B8E1A] pr-[70px] sm:border-r-0 sm:pr-0">
+                  <img src="/image/emza.png" alt="" />
                 </div>
               </div>
             </div>
+
+
+
+
+
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center pt-20 pb-20">
+      <div className="flex flex-col items-center justify-center  sm:pt-20 pb-20">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
@@ -877,483 +952,107 @@ const features:Feature []= [
           <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
           <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
         </svg>
-        <h1 className=" text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
+        <h1 className="text-[26px] sm:text-[32px] font-extrabold font-peyda-bold text-[#253B8E]  sm:pt-6">
           پروژه های موفق ما
         </h1>
-        <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
+        <p className="text-[14px] sm:text-[16px] pt-6 font-peyda-medium text-gray-500">
           لورم ایپسوم متن ساختگی با نامفهوم از صنعت چاپ است ...
         </p>
       </div>
 
-      <div className="w-[80%]">
+      <div className="w-[93%] sm:w-[80%] relative">
+        <div className="slider-button z-10">
+             <button
+          className="swiper-button-prev absolute   left-[-15px]  sm:left-[-45px]  -translate-y-1/2  p-2  text-white rounded-full
+          rounded-[50px] border border-white 
+         bg-gradient-to-b from-[#f5f6f7] to-[#ffffff] 
+         transition ease-in-out duration-300 
+         pt-[10px] pr-[7px] pb-[7px] pl-[7px]
+        "
+        >
+          <GrFormPrevious />
+        </button>
+        </div>
+         <div className="slider-button z-10"> 
+        <button className="swiper-button-next bg-[linear-gradient(90deg,#fff0_2.61%,#fff_96.79%)] absolute right-[-15px] sm:right-[-45px] -translate-y-1/2  p-2  text-white rounded-full   bg-gradient-to-b from-[#f5f6f7] to-[#ffffff]">
+          <GrFormNext />
+        </button>
+        </div>
         <Swiper
           className="w-full h-[440px]"
-          slidesPerView={3.8} // نمایش ۳ اسلاید در یک بار
           spaceBetween={20} // فاصله بین اسلایدها
           centeredSlides={true} // اسلاید وسط کامل نمایش داده شود
           grabCursor={true} // فعال‌سازی قابلیت کشیدن اسلاید
           loop={true}
-          pagination={{
-            clickable: true, // فعال کردن کلیک روی نقاط
-          }}
-          // breakpoints={{
-          //   320: {
-          //     slidesPerView: 1, // در موبایل فقط ۱ اسلاید نمایش داده می‌شود
-          //   },
-          //   768: {
-          //     slidesPerView: 2, // در تبلت ۲ اسلاید نمایش داده می‌شود
-          //   },
-          //   1024: {
-          //     slidesPerView: 3, // در دسکتاپ ۳ اسلاید نمایش داده می‌شود
-          //   },
+          // pagination={{
+          //   clickable: true, // فعال کردن کلیک روی نقاط
           // }}
+            navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
           onSlideChange={triggerAnimation}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
-          modules={[Autoplay]}
+          modules={[Autoplay,Navigation]}
+          breakpoints={{
+    0: {         // موبایل (پیش‌فرض)
+      slidesPerView: 1,
+      centeredSlides: true,
+    },
+    640: {       // sm به بالا
+      slidesPerView: 3.8,
+      centeredSlides: true,
+    },
+  }}
         >
-          <SwiperSlide>
-            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-                }}
-              />
+          {successfulProjects.map((project, i) => (
+  <SwiperSlide key={i}>
+    <div className="relative w-[400px] sm:w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer sm:mx-5">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${project.image})` }}
+      />
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+      <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
+        <h6 className="text-lg font-peyda-bold mb-3">{project.title}</h6>
 
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
+        <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5 leading-none">
+            {/* آیکون فلش */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+              <path opacity="0.5" fillRule="evenodd" clipRule="evenodd" d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z" fill="white"></path>
+              <path d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z" fill="white"></path>
+            </svg>
+          </span>
 
-              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-                <h6 className="text-lg font-peyda-bold mb-2 ">
-                  پروژه ساخت دریل بتنی
-                </h6>
+<div  className="flex justify-between bg-[#ffffff36] rounded-[16px] p-3 ">
+  <div className="flex flex-col ">
+    <span className="font-peyda-bold pb-2 text-[13px]">مدت زمان انجام</span>
+    <span className="font-peyda-bold text-[13px]">{project.features.duration}</span>
+  </div>
 
-                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.5"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
-                        fill="white"
-                      ></path>
-                      <path
-                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </span>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مدت انجام:</span>
-                    <span className="font-peyda-bold">7 ماه</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">موضوع:</span>
-                    <span className="font-peyda-bold">ساخت و تولید</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مقدار سفارشی:</span>
-                    <span className="font-peyda-bold">سفارشی دوم</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-                }}
-              />
+  <div className="flex flex-col">
+    <span className="font-peyda-bold pb-2 text-[13px]">موضوع</span>
+    <span className="font-peyda-bold text-[13px]">{project.features.subject}</span>
+  </div>
 
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-                <h6 className="text-lg font-peyda-bold mb-2 ">
-                  پروژه ساخت دریل بتنی
-                </h6>
-
-                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.5"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
-                        fill="white"
-                      ></path>
-                      <path
-                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </span>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مدت انجام:</span>
-                    <span className="font-peyda-bold">7 ماه</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">موضوع:</span>
-                    <span className="font-peyda-bold">ساخت و تولید</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مقدار سفارشی:</span>
-                    <span className="font-peyda-bold">سفارشی دوم</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-                }}
-              />
-
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-                <h6 className="text-lg font-peyda-bold mb-2 ">
-                  پروژه ساخت دریل بتنی
-                </h6>
-
-                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.5"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
-                        fill="white"
-                      ></path>
-                      <path
-                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </span>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مدت انجام:</span>
-                    <span className="font-peyda-bold">7 ماه</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">موضوع:</span>
-                    <span className="font-peyda-bold">ساخت و تولید</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مقدار سفارشی:</span>
-                    <span className="font-peyda-bold">سفارشی دوم</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-                }}
-              />
-
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-                <h6 className="text-lg font-peyda-bold mb-2 ">
-                  پروژه ساخت دریل بتنی
-                </h6>
-
-                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.5"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
-                        fill="white"
-                      ></path>
-                      <path
-                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </span>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مدت انجام:</span>
-                    <span className="font-peyda-bold">7 ماه</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">موضوع:</span>
-                    <span className="font-peyda-bold">ساخت و تولید</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مقدار سفارشی:</span>
-                    <span className="font-peyda-bold">سفارشی دوم</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-                }}
-              />
-
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-                <h6 className="text-lg font-peyda-bold mb-2 ">
-                  پروژه ساخت دریل بتنی
-                </h6>
-
-                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.5"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
-                        fill="white"
-                      ></path>
-                      <path
-                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </span>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مدت انجام:</span>
-                    <span className="font-peyda-bold">7 ماه</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">موضوع:</span>
-                    <span className="font-peyda-bold">ساخت و تولید</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مقدار سفارشی:</span>
-                    <span className="font-peyda-bold">سفارشی دوم</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-                }}
-              />
-
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-                <h6 className="text-lg font-peyda-bold mb-2 ">
-                  پروژه ساخت دریل بتنی
-                </h6>
-
-                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.5"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
-                        fill="white"
-                      ></path>
-                      <path
-                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </span>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مدت انجام:</span>
-                    <span className="font-peyda-bold">7 ماه</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">موضوع:</span>
-                    <span className="font-peyda-bold">ساخت و تولید</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مقدار سفارشی:</span>
-                    <span className="font-peyda-bold">سفارشی دوم</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-                }}
-              />
-
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-                <h6 className="text-lg font-peyda-bold mb-2 ">
-                  پروژه ساخت دریل بتنی
-                </h6>
-
-                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.5"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
-                        fill="white"
-                      ></path>
-                      <path
-                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </span>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مدت انجام:</span>
-                    <span className="font-peyda-bold">7 ماه</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">موضوع:</span>
-                    <span className="font-peyda-bold">ساخت و تولید</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مقدار سفارشی:</span>
-                    <span className="font-peyda-bold">سفارشی دوم</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer mx-5">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url('https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg')",
-                }}
-              />
-
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-[rgb(37,59,142,0.6)] z-10 transition-colors duration-500"></div>
-
-              <div className="absolute inset-0 flex flex-col justify-end p-4 z-20 transform translate-y-20 group-hover:translate-y-0 transition-all duration-500 text-white">
-                <h6 className="text-lg font-peyda-bold mb-2 ">
-                  پروژه ساخت دریل بتنی
-                </h6>
-
-                <div className="text-sm space-y-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className="absolute bottom-[88px] right-[270px] bg-[#FED128] text-white rounded-[50px] p-1.5  leading-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.5"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M20.75 12C20.75 11.5858 20.4142 11.25 20 11.25H10.75V12.75H20C20.4142 12.75 20.75 12.4142 20.75 12Z"
-                        fill="white"
-                      ></path>
-                      <path
-                        d="M10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002V18Z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </span>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مدت انجام:</span>
-                    <span className="font-peyda-bold">7 ماه</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">موضوع:</span>
-                    <span className="font-peyda-bold">ساخت و تولید</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-peyda-bold">مقدار سفارشی:</span>
-                    <span className="font-peyda-bold">سفارشی دوم</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+  <div className="flex flex-col">
+    <span className="font-peyda-bold pb-2 text-[13px]">مقدار سفارشی</span>
+    <span className="font-peyda-bold text-[13px]">{project.features.customQuantity}</span>
+  </div>
+</div>
+         
+          
+        </div>
+      </div>
+    </div>
+  </SwiperSlide>
+))}
+   
+     
         </Swiper>
       </div>
 
@@ -2017,20 +1716,7 @@ const features:Feature []= [
           }}
           grabCursor={true} // فعال‌سازی قابلیت کشیدن اسلاید
           loop={true}
-          // pagination={{
-          //   clickable: true, // فعال کردن کلیک روی نقاط
-          // }}
-          // breakpoints={{
-          //   320: {
-          //     slidesPerView: 1, // در موبایل فقط ۱ اسلاید نمایش داده می‌شود
-          //   },
-          //   768: {
-          //     slidesPerView: 2, // در تبلت ۲ اسلاید نمایش داده می‌شود
-          //   },
-          //   1024: {
-          //     slidesPerView: 3, // در دسکتاپ ۳ اسلاید نمایش داده می‌شود
-          //   },
-          // }}
+     
           onSlideChange={triggerAnimation}
           autoplay={{
             delay: 2500,
