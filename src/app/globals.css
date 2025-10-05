@@ -230,13 +230,13 @@ background-color: white;
 }
 /* at-animation-glow */
 
-.at-image-container-b {
+/* .at-image-container-b {
     position: relative;
     width: 200px;
     height: 200px;
     top: 10px;
     right: 345px;
-}
+} */
 .at-ring:nth-child(1) {
     transform: scale(1);
     animation-delay: 0s;

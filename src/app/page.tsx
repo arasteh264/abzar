@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { ReactNode } from "react";
+import {successfulProjects,features,discountedProduct,ProductsSlider} from "../data/db"
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -12,24 +12,7 @@ import { RxCross2 } from "react-icons/rx";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { LuMessageSquareText } from "react-icons/lu";
-type SuccessfulProject = {
-  title: string;
-  link: string;
-  image:string;
-  icon: ReactNode;
-    features: {
-    duration: string,
-    subject: string,
-    customQuantity:string,
-    }
-};
 
-  type Feature = {
-    id?:   number | null;
-    title: string;
-    icon: ReactNode;
-    link: string;
-  };
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,289 +31,9 @@ export default function Home() {
   const [isActive5, setIsActive5] = useState(false);
   const [isActive6, setIsActive6] = useState(false);
 
-  // ایدی رو به صورت اختیاری تعریف کردم 
-  const features: Feature[] = [
-    {
-      title: "تولید انبوه محصولات",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 48 48"
-          fill="none"
-        >
-          <g opacity="0.5">
-            <path
-              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-              fill="white"
-            ></path>
-          </g>
-          <path
-            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-            fill="white"
-          ></path>
-          <path
-            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-            fill="white"
-          ></path>
-          <path
-            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-            fill="white"
-          ></path>
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-            fill="white"
-          ></path>
-        </svg>
-      ),
-      link: "#",
-    },
-    {
-      title: "پشتیبانی دائمی",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 48 48"
-          fill="none"
-        >
-          <g opacity="0.5">
-            <path
-              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-              fill="white"
-            ></path>
-          </g>
-          <path
-            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-            fill="white"
-          ></path>
-          <path
-            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-            fill="white"
-          ></path>
-          <path
-            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-            fill="white"
-          ></path>
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-            fill="white"
-          ></path>
-        </svg>
-      ),
-      link: "#",
-    },
-    {
-      title: "گارانتی ویژه محصولات",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 48 48"
-          fill="none"
-        >
-          <g opacity="0.5">
-            <path
-              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-              fill="white"
-            ></path>
-          </g>
-          <path
-            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-            fill="white"
-          ></path>
-          <path
-            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-            fill="white"
-          ></path>
-          <path
-            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-            fill="white"
-          ></path>
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-            fill="white"
-          ></path>
-        </svg>
-      ),
-      link: "#",
-    },
-    {
-      title: "محصولاتی با کیفیت بالا",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 48 48"
-          fill="none"
-        >
-          <g opacity="0.5">
-            <path
-              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-              fill="white"
-            ></path>
-          </g>
-          <path
-            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-            fill="white"
-          ></path>
-          <path
-            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-            fill="white"
-          ></path>
-          <path
-            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-            fill="white"
-          ></path>
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-            fill="white"
-          ></path>
-        </svg>
-      ),
-      link: "#",
-    },
-    {
-      title: "30 روز بازگشت وجه",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 48 48"
-          fill="none"
-        >
-          <g opacity="0.5">
-            <path
-              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
-              fill="white"
-            ></path>
-          </g>
-          <path
-            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
-            fill="white"
-          ></path>
-          <path
-            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
-            fill="white"
-          ></path>
-          <path
-            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
-            fill="white"
-          ></path>
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
-            fill="white"
-          ></path>
-        </svg>
-      ),
-      link: "#",
-    },
-  ];
-const successfulProjects: SuccessfulProject[] = [
-  {
-    title: "پروژه ساخت دریل بتنی",
-    link: "https://aria-code.ir/aria/projects/xsd/",
-    icon: <GoArrowLeft />,
-    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg",
-    features: {
-      duration: "7 ماه",
-      subject: "ساخت و تولید",
-      customQuantity: "سفارشی دوم",
-    },
-  },
-  {
-    title: "پروژه طراحی خط تولید",
-    link: "https://aria-code.ir/aria/projects/xsd-copy/",
-    icon: <GoArrowLeft />,
-    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/tooling-services-main-2023.jpg",
-    features: {
-      duration: "2 سال",
-      subject: "خط تولید",
-      customQuantity: "سفارشی دوم",
-    },
-  },
-   {
-    title: "پروژه طراحی خط تولید",
-    link: "https://aria-code.ir/aria/projects/xsd-copy/",
-    icon: <GoArrowLeft />,
-    image: "/image/slider-section3-4.jpg",
-    features: {
-      duration: "2 سال",
-      subject: "خط تولید",
-      customQuantity: "سفارشی دوم",
-    },
-  },
-  {
-    title: "پروژه ساخت دریل بتنی",
-    link: "https://aria-code.ir/aria/projects/xsd/",
-    icon: <GoArrowLeft />,
-    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/Screenshot_28.jpg",
-    features: {
-      duration: "7 ماه",
-      subject: "ساخت و تولید",
-      customQuantity: "سفارشی دوم",
-    },
-  },
-  {
-    title: "همکاری با شرکت برفاب",
-    link: "https://aria-code.ir/aria/projects/xsd-copy/",
-    icon: <GoArrowLeft />,
-    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/tooling-services-main-2023.jpg",
-    features: {
-      duration: "2 سال",
-      subject: "خط تولید",
-      customQuantity: "سفارشی دوم",
-    },
-  },
-   {
-    title: "همکاری با شرکت بنز",
-    link: "https://aria-code.ir/aria/projects/xsd-copy/",
-    icon: <GoArrowLeft />,
-    image: "/image/slider-section3-4.jpg",
-    features: {
-      duration: "2 سال",
-      subject: "خط تولید",
-      customQuantity: "سفارشی دوم",
-    },
-  },
-  {
-    title: "پروژه طراحی خط تولید",
-    link: "https://aria-code.ir/aria/projects/xsd-copy/",
-    icon: <GoArrowLeft />,
-    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/tooling-services-main-2023.jpg",
-    features: {
-      duration: "2 سال",
-      subject: "خط تولید",
-      customQuantity: "سفارشی دوم",
-    },
-  },
-    {
-    title: "همکاری با شرکت برفاب",
-    link: "https://aria-code.ir/aria/projects/xsd-copy/",
-    icon: <GoArrowLeft />,
-    image: "https://aria-code.ir/aria/wp-content/uploads/2025/02/tooling-services-main-2023.jpg",
-    features: {
-      duration: "2 سال",
-      subject: "خط تولید",
-      customQuantity: "سفارشی دوم",
-    },
-  },
-];
+
+
+
 
 
   const checkActive = (
@@ -398,7 +101,7 @@ const successfulProjects: SuccessfulProject[] = [
             <p className="text-[16px] pt-6 font-peyda-medium text-center">
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ است ...
             </p>
-            <div className="flex items-center pt-8">
+            <div className="flex items-center pt-5 pb-5">
               <button className="text-[16px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] font-peyda-medium bg-[#1a3175] hover:bg-white hover:text-[#1a3175] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
                 مشاهده فروشگاه
               </button>
@@ -430,14 +133,14 @@ const successfulProjects: SuccessfulProject[] = [
               </span>
             </div>
           </div>
-          <div className="hidden sm:flex sm:items-center sm:pt-7 mainSlider">
-            <div className="at-image-container-b">
-              <div className="at-ring"></div>
+          <div className="sm:flex sm:items-center sm:pt-7 mainSlider relative">
+            <div className="absolute w-[165px] sm:w-[200px] h-[165px] sm:h-[200px] top-[85px]  sm:top-[115px] right-[75px] sm:right-[120px]">
+              <div className="at-ring"></div >
               <div className="at-ring"></div>
               <div className="at-ring"></div>
             </div>
             <Swiper
-              className="w-[500px] h-[440px]"
+              className="w-[320px] sm:w-[500px] h-[440px]"
               spaceBetween={50}
               slidesPerView={1}
               onSlideChange={triggerAnimation}
@@ -448,148 +151,79 @@ const successfulProjects: SuccessfulProject[] = [
               loop={true}
               modules={[Autoplay]}
             >
-              <SwiperSlide>
-                <div className="flex flex-row items-center  content-center relative right-[385px] gap-[10px] bg-[#50689e] w-[23%] p-1.5 rounded-[50px] font-peyda-medium text-lg animate-target">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <path
-                      opacity="0.5"
-                      d="M6.30464 21.5159C4.24392 19.4551 3.21357 18.4248 2.83017 17.088C2.44678 15.7512 2.77443 14.3313 3.42974 11.4917L3.80764 9.8541C4.35895 7.46508 4.63461 6.27057 5.45258 5.4526C6.27055 4.63463 7.46506 4.35897 9.85408 3.80766L11.4917 3.42976C14.3313 2.77445 15.7511 2.4468 17.088 2.83019C18.4248 3.21358 19.4551 4.24394 21.5158 6.30465L23.9554 8.74416C27.5407 12.3295 29.3333 14.1221 29.3333 16.3498C29.3333 18.5774 27.5407 20.37 23.9554 23.9553L23.9554 23.9554L23.9553 23.9554C20.37 27.5407 18.5774 29.3333 16.3497 29.3333C14.1221 29.3333 12.3295 27.5407 8.74415 23.9554L6.30464 21.5159Z"
-                      fill="white"
-                    ></path>
-                    <path
-                      d="M13.4979 9.69513C14.5481 10.7452 14.5481 12.4478 13.4979 13.4979C12.4478 14.548 10.7453 14.548 9.69515 13.4979C8.64503 12.4478 8.64503 10.7452 9.69515 9.69513C10.7453 8.64502 12.4478 8.64502 13.4979 9.69513Z"
-                      fill="white"
-                    ></path>
-                    <path
-                      d="M25.4015 16.0686L16.0962 25.3743C15.7057 25.7648 15.0725 25.7648 14.682 25.3743C14.2915 24.9838 14.2915 24.3506 14.682 23.9601L23.9873 14.6544C24.3778 14.2639 25.011 14.2639 25.4015 14.6544C25.7921 15.0449 25.7921 15.6781 25.4015 16.0686Z"
-                      fill="white"
-                    ></path>
-                  </svg>
-                  <span>20%</span>
-                </div>
-                <div className="flex flex-row items-center content-center relative top-[350px] gap-[10px] bg-[#50689e] w-[35%] p-1.5 rounded-[50px] font-peyda-medium text-lg animate-target">
-                  <span>400,000 تومان</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <path
-                      opacity="0.5"
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M29.3333 16C29.3333 23.3638 23.3638 29.3333 16 29.3333C8.6362 29.3333 2.66666 23.3638 2.66666 16C2.66666 8.63621 8.6362 2.66667 16 2.66667C23.3638 2.66667 29.3333 8.63621 29.3333 16Z"
-                      fill="white"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M16 7C16.5523 7 17 7.44772 17 8V8.42231C19.1739 8.81156 21 10.4448 21 12.6667C21 13.219 20.5523 13.6667 20 13.6667C19.4477 13.6667 19 13.219 19 12.6667C19 11.7621 18.2479 10.8045 17 10.4633V15.089C19.1739 15.4782 21 17.1115 21 19.3333C21 21.5552 19.1739 23.1884 17 23.5777V24C17 24.5523 16.5523 25 16 25C15.4477 25 15 24.5523 15 24V23.5777C12.8261 23.1884 11 21.5552 11 19.3333C11 18.781 11.4477 18.3333 12 18.3333C12.5523 18.3333 13 18.781 13 19.3333C13 20.2379 13.7521 21.1955 15 21.5367V16.911C12.8261 16.5218 11 14.8885 11 12.6667C11 10.4448 12.8261 8.81156 15 8.42231V8C15 7.44772 15.4477 7 16 7ZM15 10.4633C13.7521 10.8045 13 11.7621 13 12.6667C13 13.5713 13.7521 14.5288 15 14.87V10.4633ZM19 19.3333C19 18.4287 18.2479 17.4712 17 17.13V21.5367C18.2479 21.1955 19 20.2379 19 19.3333Z"
-                      fill="white"
-                    />
-                  </svg>
-                </div>
-                <span className="bottom-[70px] relative animate-target">
-                  <img
-                    src="/image/drile1.png"
-                    className="w-[5%] w-[80px] h-[80px] opacity-80   "
-                    alt=""
-                  />
-                </span>
-                <span className="relative top-[168px] right-[420px] animate-target">
-                  <img
-                    src="/image/drile1.png"
-                    className="w-[5%] w-[80px] h-[80px] opacity-80  "
-                    alt=""
-                  />
-                </span>
-                <span className="relative bottom-[252px] right-[30px]">
-                  <img
-                    src="/image/drile1.png"
-                    className="w-[85%] mainDrille"
-                    alt=""
-                  />
-                </span>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="flex flex-row items-center content-center relative right-[385px] gap-[10px] bg-[#50689e] w-[23%] p-1.5 rounded-[50px] font-peyda-medium text-lg animate-target">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <path
-                      opacity="0.5"
-                      d="M6.30464 21.5159C4.24392 19.4551 3.21357 18.4248 2.83017 17.088C2.44678 15.7512 2.77443 14.3313 3.42974 11.4917L3.80764 9.8541C4.35895 7.46508 4.63461 6.27057 5.45258 5.4526C6.27055 4.63463 7.46506 4.35897 9.85408 3.80766L11.4917 3.42976C14.3313 2.77445 15.7511 2.4468 17.088 2.83019C18.4248 3.21358 19.4551 4.24394 21.5158 6.30465L23.9554 8.74416C27.5407 12.3295 29.3333 14.1221 29.3333 16.3498C29.3333 18.5774 27.5407 20.37 23.9554 23.9553L23.9554 23.9554L23.9553 23.9554C20.37 27.5407 18.5774 29.3333 16.3497 29.3333C14.1221 29.3333 12.3295 27.5407 8.74415 23.9554L6.30464 21.5159Z"
-                      fill="white"
-                    ></path>
-                    <path
-                      d="M13.4979 9.69513C14.5481 10.7452 14.5481 12.4478 13.4979 13.4979C12.4478 14.548 10.7453 14.548 9.69515 13.4979C8.64503 12.4478 8.64503 10.7452 9.69515 9.69513C10.7453 8.64502 12.4478 8.64502 13.4979 9.69513Z"
-                      fill="white"
-                    ></path>
-                    <path
-                      d="M25.4015 16.0686L16.0962 25.3743C15.7057 25.7648 15.0725 25.7648 14.682 25.3743C14.2915 24.9838 14.2915 24.3506 14.682 23.9601L23.9873 14.6544C24.3778 14.2639 25.011 14.2639 25.4015 14.6544C25.7921 15.0449 25.7921 15.6781 25.4015 16.0686Z"
-                      fill="white"
-                    ></path>
-                  </svg>
-                  <span>20%</span>
-                </div>
-                <div className="flex flex-row items-center content-center relative top-[350px] gap-[10px] bg-[#50689e] w-[35%] p-1.5 rounded-[50px] font-peyda-medium text-lg  animate-target">
-                  <span>400,000 تومان</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <path
-                      opacity="0.5"
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M29.3333 16C29.3333 23.3638 23.3638 29.3333 16 29.3333C8.6362 29.3333 2.66666 23.3638 2.66666 16C2.66666 8.63621 8.6362 2.66667 16 2.66667C23.3638 2.66667 29.3333 8.63621 29.3333 16Z"
-                      fill="white"
-                    ></path>
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M16 7C16.5523 7 17 7.44772 17 8V8.42231C19.1739 8.81156 21 10.4448 21 12.6667C21 13.219 20.5523 13.6667 20 13.6667C19.4477 13.6667 19 13.219 19 12.6667C19 11.7621 18.2479 10.8045 17 10.4633V15.089C19.1739 15.4782 21 17.1115 21 19.3333C21 21.5552 19.1739 23.1884 17 23.5777V24C17 24.5523 16.5523 25 16 25C15.4477 25 15 24.5523 15 24V23.5777C12.8261 23.1884 11 21.5552 11 19.3333C11 18.781 11.4477 18.3333 12 18.3333C12.5523 18.3333 13 18.781 13 19.3333C13 20.2379 13.7521 21.1955 15 21.5367V16.911C12.8261 16.5218 11 14.8885 11 12.6667C11 10.4448 12.8261 8.81156 15 8.42231V8C15 7.44772 15.4477 7 16 7ZM15 10.4633C13.7521 10.8045 13 11.7621 13 12.6667C13 13.5713 13.7521 14.5288 15 14.87V10.4633ZM19 19.3333C19 18.4287 18.2479 17.4712 17 17.13V21.5367C18.2479 21.1955 19 20.2379 19 19.3333Z"
-                      fill="white"
-                    ></path>
-                  </svg>
-                </div>
-                <span className="bottom-[70px] relative animate-target">
-                  <img
-                    src="/image/drile2.png"
-                    className="w-[5%] w-[80px] h-[80px] opacity-80   "
-                    alt=""
-                  />
-                </span>
-                <span className="relative top-[168px] right-[420px]  animate-target">
-                  <img
-                    src="/image/drile2.png"
-                    className="w-[5%] w-[80px] h-[80px] opacity-80  "
-                    alt=""
-                  />
-                </span>
-                <span className="relative bottom-[252px] right-[30px]">
-                  <img
-                    src="/image/drile2.png"
-                    className="w-[85%] mainDrille"
-                    alt=""
-                  />
-                </span>
-              </SwiperSlide>
+            {discountedProduct.map((item, index) => (
+  <SwiperSlide key={index}>
+    <div className="flex flex-row items-center  content-center relative right-[230px] sm:right-[385px] gap-[10px] bg-[#50689e] w-[23%] p-1 sm:p-1.5 rounded-[50px] font-peyda-medium text-[13px] sm:text-lg animate-target">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-[25px] sm:w-[32px]  sm:h-[32px]"
+        viewBox="0 0 32 32"
+        fill="none"
+      >
+        <path
+          opacity="0.5"
+          d="M6.30464 21.5159C4.24392 19.4551 3.21357 18.4248 2.83017 17.088C2.44678 15.7512 2.77443 14.3313 3.42974 11.4917L3.80764 9.8541C4.35895 7.46508 4.63461 6.27057 5.45258 5.4526C6.27055 4.63463 7.46506 4.35897 9.85408 3.80766L11.4917 3.42976C14.3313 2.77445 15.7511 2.4468 17.088 2.83019C18.4248 3.21358 19.4551 4.24394 21.5158 6.30465L23.9554 8.74416C27.5407 12.3295 29.3333 14.1221 29.3333 16.3498C29.3333 18.5774 27.5407 20.37 23.9554 23.9553L23.9554 23.9554L23.9553 23.9554C20.37 27.5407 18.5774 29.3333 16.3497 29.3333C14.1221 29.3333 12.3295 27.5407 8.74415 23.9554L6.30464 21.5159Z"
+          fill="white"
+        ></path>
+        <path
+          d="M13.4979 9.69513C14.5481 10.7452 14.5481 12.4478 13.4979 13.4979C12.4478 14.548 10.7453 14.548 9.69515 13.4979C8.64503 12.4478 8.64503 10.7452 9.69515 9.69513C10.7453 8.64502 12.4478 8.64502 13.4979 9.69513Z"
+          fill="white"
+        ></path>
+        <path
+          d="M25.4015 16.0686L16.0962 25.3743C15.7057 25.7648 15.0725 25.7648 14.682 25.3743C14.2915 24.9838 14.2915 24.3506 14.682 23.9601L23.9873 14.6544C24.3778 14.2639 25.011 14.2639 25.4015 14.6544C25.7921 15.0449 25.7921 15.6781 25.4015 16.0686Z"
+          fill="white"
+        ></path>
+      </svg>
+      <span>{item.discount}</span>
+    </div>
+
+    <div className="flex flex-row items-center content-center relative top-[245px] sm:top-[350px] gap-[10px] bg-[#50689e] w-[40%] sm:w-[35%] p-1.5 rounded-[50px] font-peyda-medium text-[13px] sm:text-lg animate-target">
+      <span>{item.price}</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-[25px] sm:w-[32px]  sm:h-[32px]"
+        viewBox="0 0 32 32"
+        fill="none"
+      >
+        <path
+          opacity="0.5"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M29.3333 16C29.3333 23.3638 23.3638 29.3333 16 29.3333C8.6362 29.3333 2.66666 23.3638 2.66666 16C2.66666 8.63621 8.6362 2.66667 16 2.66667C23.3638 2.66667 29.3333 8.63621 29.3333 16Z"
+          fill="white"
+        ></path>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M16 7C16.5523 7 17 7.44772 17 8V8.42231C19.1739 8.81156 21 10.4448 21 12.6667C21 13.219 20.5523 13.6667 20 13.6667C19.4477 13.6667 19 13.219 19 12.6667C19 11.7621 18.2479 10.8045 17 10.4633V15.089C19.1739 15.4782 21 17.1115 21 19.3333C21 21.5552 19.1739 23.1884 17 23.5777V24C17 24.5523 16.5523 25 16 25C15.4477 25 15 24.5523 15 24V23.5777C12.8261 23.1884 11 21.5552 11 19.3333C11 18.781 11.4477 18.3333 12 18.3333C12.5523 18.3333 13 18.781 13 19.3333C13 20.2379 13.7521 21.1955 15 21.5367V16.911C12.8261 16.5218 11 14.8885 11 12.6667C11 10.4448 12.8261 8.81156 15 8.42231V8C15 7.44772 15.4477 7 16 7ZM15 10.4633C13.7521 10.8045 13 11.7621 13 12.6667C13 13.5713 13.7521 14.5288 15 14.87V10.4633ZM19 19.3333C19 18.4287 18.2479 17.4712 17 17.13V21.5367C18.2479 21.1955 19 20.2379 19 19.3333Z"
+          fill="white"
+        ></path>
+      </svg>
+    </div>
+
+    <span className="bottom-[70px] relative animate-target">
+      <img
+        src={item.image}
+        className="w-[5%] w-[80px] h-[80px] opacity-80"
+        alt=""
+      />
+    </span>
+    <span className="relative top-[100px] sm:top-[168px] right-[250px] sm:right-[420px] animate-target">
+      <img
+        src={item.image}
+        className="w-[5%] w-[80px] h-[80px] opacity-80"
+        alt=""
+      />
+    </span>
+    <span className="relative bottom-[220px] sm:bottom-[252px] right-[30px]">
+      <img
+        src={item.image}
+        className="w-[85%] mainDrille"
+        alt=""
+      />
+    </span>
+  </SwiperSlide>
+))}
             </Swiper>
           </div>
         </div>
@@ -615,9 +249,9 @@ const successfulProjects: SuccessfulProject[] = [
       </div>
 
       <div className="hidden  sm:w-[80%] sm:flex sm:items-center sm:justify-between sm:pb-20">
-        {features.map((item) => (
+        {features.map((item, index) => (
           <div
-            key={item.id}
+            key={index}
             className="group flex flex-col items-center w-[20%] border-2 border-white rounded-[31px] 
                      shadow-[0_16px_32px_0_#2B37421A] p-8 ml-6 
                      hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222]"
@@ -626,7 +260,38 @@ const successfulProjects: SuccessfulProject[] = [
               className="bg-[#253b8e] p-[17px] rounded-[50px] 
                        group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
             >
-              {item.icon}
+          <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 48 48"
+          fill="none"
+        >
+          <g opacity="0.5">
+            <path
+              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+              fill="white"
+            ></path>
+          </g>
+          <path
+            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+            fill="white"
+          ></path>
+          <path
+            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+            fill="white"
+          ></path>
+          <path
+            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+            fill="white"
+          ></path>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+            fill="white"
+          ></path>
+        </svg>
             </div>
 
             <span
@@ -662,7 +327,38 @@ const successfulProjects: SuccessfulProject[] = [
                     ${isLast ? "col-span-2 w-[90%] justify-self-center" : ""}`}
             >
               <div className="bg-[#253b8e] p-[17px] rounded-[50px] group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out">
-                {item.icon}
+                <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 48 48"
+          fill="none"
+        >
+          <g opacity="0.5">
+            <path
+              d="M43.999 25.635L43.182 24.818C41.4246 23.0607 38.5754 23.0607 36.818 24.818L35.2151 26.4209C34.5756 24.7146 32.9296 23.5 31 23.5C28.5147 23.5 26.5 25.5147 26.5 28V31.5277C25.5202 31.6366 24.5693 32.0667 23.818 32.818C22.0607 34.5754 22.0607 37.4246 23.818 39.182L24.636 40H20C12.4575 40 8.68629 40 6.34315 37.6569C4 35.3137 4 31.5425 4 24C4 23.1161 4.00377 20.7841 4.00754 20H44C44.0038 20.7841 44 23.1161 44 24C44 24.5659 44 25.1106 43.999 25.635Z"
+              fill="white"
+            ></path>
+          </g>
+          <path
+            d="M10.5 32C10.5 31.1716 11.1716 30.5 12 30.5H20C20.8284 30.5 21.5 31.1716 21.5 32C21.5 32.8284 20.8284 33.5 20 33.5H12C11.1716 33.5 10.5 32.8284 10.5 32Z"
+            fill="white"
+          ></path>
+          <path
+            d="M19.9897 8H28.0103C35.5722 8 39.3532 8 41.7024 10.2316C43.3938 11.8383 43.8674 14.1501 44 18V20H4V18C4.1326 14.1501 4.60619 11.8383 6.29762 10.2316C8.64681 8 12.4278 8 19.9897 8Z"
+            fill="white"
+          ></path>
+          <path
+            d="M38.9393 26.9393C39.5251 26.3536 40.4749 26.3536 41.0607 26.9393L45.0607 30.9393C45.6465 31.5251 45.6465 32.4749 45.0607 33.0607C44.4749 33.6464 43.5251 33.6464 42.9393 33.0607L41.5 31.6213V40C41.5 40.8284 40.8284 41.5 40 41.5C39.1716 41.5 38.5 40.8284 38.5 40V31.6213L37.0607 33.0607C36.4749 33.6464 35.5251 33.6464 34.9393 33.0607C34.3536 32.4749 34.3536 31.5251 34.9393 30.9393L38.9393 26.9393Z"
+            fill="white"
+          ></path>
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M31 26.5C31.8284 26.5 32.5 27.1716 32.5 28V36.3787L33.9393 34.9393C34.5251 34.3536 35.4749 34.3536 36.0607 34.9393C36.6464 35.5251 36.6464 36.4749 36.0607 37.0607L32.0607 41.0607C31.4749 41.6464 30.5251 41.6464 29.9393 41.0607L25.9393 37.0607C25.3536 36.4749 25.3536 35.5251 25.9393 34.9393C26.5251 34.3536 27.4749 34.3536 28.0607 34.9393L29.5 36.3787V28C29.5 27.1716 30.1716 26.5 31 26.5Z"
+            fill="white"
+          ></path>
+        </svg>
               </div>
               <span className="text-[14px] pt-4 font-peyda-bold text-[#253B8E] group-hover:text-white transition-colors duration-300 ease-in-out">
                 {item.title}
@@ -1062,32 +758,32 @@ const successfulProjects: SuccessfulProject[] = [
         مشاهده همه پروژه ها
       </button>
 
-      <div className=" sm:w-[80%] sm:h-[148px] bg-[#253B8E] bg-opacity-0 flex justify-between rounded-[20px] pr-7  mt-30">
-        <div className="flex items-center">
+      <div className="flex flex-col sm:flex-row w-[95%] sm:w-[80%] sm:h-[148px] bg-[#253B8E] bg-opacity-0 flex justify-between rounded-[20px]  pt-7 sm:pt-0 pr-3 sm:pr-7  mt-30">
+        <div className="flex items-start sm:items-center sm:flex-row flex-col">
           <div>
-            <h1 className="font-peyda-medium text-[25px] text-white">
+            <h1 className="font-peyda-medium text-[20px] sm:text-[25px] text-white">
               کاتالوگ انواع محصولات شرکت آریا
             </h1>
-            <span className="font-peyda-medium text-[15px] text-white">
+            <span className="font-peyda-medium text-[14px] sm:text-[15px] text-white">
               لیست کامل محصولات آریا تجارت به صورت کاتالوگ
             </span>
           </div>
-          <div className="flex flex-col gap-5 pr-20">
-            <button className="text-[15px]  pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-[#fed128] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+          <div className="flex sm:flex-col items-start sm:items-center gap-2 sm:gap-5 sm:pr-20 pt-9 sm:pt-0">
+            <button className="text-[13px] sm:text-[15px]  pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-[#fed128] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover:bg-white bg-opacity-0 bg-gradient-radial hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
               مشاهده محصولات
             </button>
-            <button className="text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover: bg-[#fed128]  hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
+            <button className="text-[13px] sm:text-[15px] pt-[14px] pr-[30px] pb-[14px] pl-[30px] text-[#464646] font-peyda-medium bg-gradient-to-b from-[#F5F6F7] to-[#FFFFFF] shadow-[0_16px_32px_0_rgba(43,55,66,.1)] hover: bg-[#fed128]  hover:text-[#464646] p-[17px] rounded-[60px] transition-colors duration-300 ease-in-out">
               دانلود نسخه PDF
             </button>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex relative">
           <img
             src="/image/majale.png"
-            className="w-[93%] h-[135%] relative top-[-35px] right-[-60px] z-10"
+            className="w-[93%] h-[135%] relative top-[30px] sm:top-[-35px] sm:right-[-60px] z-10"
             alt=""
           />
-          <div className="at-image-container-b-slide">
+          <div className="absolute w-[190px] h-[190px] left-[95px] top-[117px] sm:w-[200px] sm:h-[200px] sm:left-[120px] sm:top-[10px]">
             <div className="at-ring"></div>
             <div className="at-ring"></div>
             <div className="at-ring"></div>
@@ -1106,7 +802,7 @@ const successfulProjects: SuccessfulProject[] = [
           <circle cx="10" cy="10" r="10" fill="#7E6AF0"></circle>
           <circle cx="22" cy="10" r="10" fill="#FED128"></circle>
         </svg>
-        <h1 className=" text-[32px] font-extrabold font-peyda-bold text-[#253B8E] pt-6">
+        <h1 className="text-[26px] sm:text-[32px] font-extrabold font-peyda-bold text-[#253B8E]  sm:pt-6">
           محصولات پرفروش ما
         </h1>
         <p className="text-[16px] pt-6 font-peyda-medium text-gray-500">
@@ -1129,7 +825,7 @@ const successfulProjects: SuccessfulProject[] = [
           <GrFormNext />
         </button>
         <Swiper
-          className="w-full "
+          className="w-full"
           slidesPerView={4.9} // نمایش ۳ اسلاید در یک بار
           spaceBetween={0} // فاصله بین اسلایدها
           navigation={{
@@ -1138,533 +834,67 @@ const successfulProjects: SuccessfulProject[] = [
           }}
           grabCursor={true} // فعال‌سازی قابلیت کشیدن اسلاید
           loop={true}
-          // pagination={{
-          //   clickable: true, // فعال کردن کلیک روی نقاط
-          // }}
-          // breakpoints={{
-          //   320: {
-          //     slidesPerView: 1, // در موبایل فقط ۱ اسلاید نمایش داده می‌شود
-          //   },
-          //   768: {
-          //     slidesPerView: 2, // در تبلت ۲ اسلاید نمایش داده می‌شود
-          //   },
-          //   1024: {
-          //     slidesPerView: 3, // در دسکتاپ ۳ اسلاید نمایش داده می‌شود
-          //   },
-          // }}
           onSlideChange={triggerAnimation}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
+                 breakpoints={{
+    0: {         // موبایل (پیش‌فرض)
+      slidesPerView: 1,
+      centeredSlides: true,
+      spaceBetween:100
+    },
+    640: {       // sm به بالا
+      slidesPerView: 3.8,
+      centeredSlides: true,
+      spaceBetween:20
+    },
+  }}
           modules={[Autoplay, Navigation]}
         >
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
+          {ProductsSlider.map((item) => (
+        <SwiperSlide key={item.id}>
+          <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
+            <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
+              <span className="text-center block rounded-[60px]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="rounded-[20px]"
+                />
               </span>
+            </div>
 
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
+            <span  className="text-gray-800 font-peyda-medium">{item.title}</span>
 
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
+            <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
+              <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                {item.category}
+              </span>
+              <span className="pl-2 pr-2 text-[#ccc3]">|</span>
+              <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
+                {item.subCategory}
+              </span>
+            </div>
+
+            <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
+              <button
+                className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
+                 group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
+              >
+                <RiShoppingCart2Line
+                  className="text-white rounded-[5px] w-[15px] h-[15px] 
+                   group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
+                />
+              </button>
+              <div>
+                <span className="text-sm text-gray-500"> {item.price}</span>
               </div>
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
-              </span>
-
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
-
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/Frame-10856-min.webp"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
-              </span>
-
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
-
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
-              </span>
-
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
-
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
-              </span>
-
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
-
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/Frame-10856-min.webp"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
-              </span>
-
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
-
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
-              </span>
-
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
-
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
-              </span>
-
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
-
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
-              </span>
-
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
-
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
-              </span>
-
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
-
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex flex-col items-center w-[236px] rounded-[24px] p-3 border border-[#ededed]  bg-[#ffffff] min-h-[330px]">
-              <div className="relative h-full w-full rounded-2xl overflow-hidden  p-[20px] bg-[#f6f6f6] relative bottom-[46px]">
-                <span className="text-center block rounded-[60px]">
-                  <img
-                    src="https://aria-code.ir/aria/wp-content/uploads/2025/02/TR001R-A-300x300.jpg"
-                    alt="دستگاه برش cwa5qa"
-                    className="rounded-[20px]"
-                  />
-                </span>
-              </div>
-
-              <span className="text-gray-800 font-peyda-medium">
-                دستگاه برش cwa5qa
-              </span>
-
-              <div className="text-xs text-gray-500 mt-1 font-peyda-medium">
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  ابزار صنعتی
-                </span>
-                <span className="pl-2 pr-2 text-[#ccc3]">|</span>
-                <span className="text-[10px] pt-6 font-peyda-medium text-[#848484]">
-                  بتن شکن
-                </span>
-              </div>
-
-              <div className="mt-2 text-lg font-bold text-gray-800  w-full flex  items-center justify-between">
-                <button
-                  className="bg-[#253e8b] p-[10px] leading-none rounded-[60px]  
-             group hover:bg-yellow-400 transition-colors duration-300 ease-in-out"
-                >
-                  <RiShoppingCart2Line
-                    className="text-white rounded-[5px] w-[15px] h-[15px] 
-               group-hover:text-[#253e8b] transition-colors duration-300 ease-in-out"
-                  />
-                </button>
-                <div>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    2,000,000 تومان
-                  </span>
-                  {/* <span>اگر تخفیف داشت</span> */}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+          </div>
+        </SwiperSlide>
+      ))}
         </Swiper>
       </div>
 
