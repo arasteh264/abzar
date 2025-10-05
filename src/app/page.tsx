@@ -649,7 +649,7 @@ const successfulProjects: SuccessfulProject[] = [
         ))}
       </div>
 
-      <div className="sm:hidden w-full grid grid-cols-2 gap-4">
+      <div className="sm:hidden  grid grid-cols-2 gap-4">
         {features.map((item, index) => {
           // کارت آخر بزرگ‌تر
           const isLast = index === features.length - 1;
@@ -659,7 +659,7 @@ const successfulProjects: SuccessfulProject[] = [
               key={item.id}
               className={`group flex flex-col items-center border-2 border-white rounded-[31px] shadow-[0_16px_32px_0_#2B37421A] p-6 
                     hover:bg-gradient-to-b hover:from-[#666666] hover:to-[#222222] transition-colors duration-300 ease-in-out
-                    ${isLast ? "col-span-2 w-full" : ""}`}
+                    ${isLast ? "col-span-2 w-[90%] justify-self-center" : ""}`}
             >
               <div className="bg-[#253b8e] p-[17px] rounded-[50px] group-hover:bg-yellow-400 transition-colors duration-300 ease-in-out">
                 {item.icon}
@@ -960,7 +960,7 @@ const successfulProjects: SuccessfulProject[] = [
         </p>
       </div>
 
-      <div className="w-[93%] sm:w-[80%] relative">
+      <div className="w-[90%] sm:w-[80%] relative">
         <div className="slider-button z-10">
              <button
           className="swiper-button-prev absolute   left-[-15px]  sm:left-[-45px]  -translate-y-1/2  p-2  text-white rounded-full
@@ -979,7 +979,7 @@ const successfulProjects: SuccessfulProject[] = [
         </button>
         </div>
         <Swiper
-          className="w-full h-[440px]"
+          className="w-full h-[440px] rounded-[20px]"
           spaceBetween={20} // فاصله بین اسلایدها
           centeredSlides={true} // اسلاید وسط کامل نمایش داده شود
           grabCursor={true} // فعال‌سازی قابلیت کشیدن اسلاید
@@ -996,21 +996,23 @@ const successfulProjects: SuccessfulProject[] = [
             delay: 2500,
             disableOnInteraction: false,
           }}
-          modules={[Autoplay,Navigation]}
+          modules={[Navigation]}
           breakpoints={{
     0: {         // موبایل (پیش‌فرض)
       slidesPerView: 1,
       centeredSlides: true,
+      spaceBetween:100
     },
     640: {       // sm به بالا
       slidesPerView: 3.8,
       centeredSlides: true,
+      spaceBetween:20
     },
   }}
         >
           {successfulProjects.map((project, i) => (
   <SwiperSlide key={i}>
-    <div className="relative w-[400px] sm:w-[315px] h-[380px] overflow-hidden rounded-xl group cursor-pointer sm:mx-5">
+    <div className="relative rounded-[20px] w-full sm:w-[315px] h-[380px] overflow-hidden  group cursor-pointer sm:mx-5 ">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${project.image})` }}
@@ -1060,7 +1062,7 @@ const successfulProjects: SuccessfulProject[] = [
         مشاهده همه پروژه ها
       </button>
 
-      <div className="w-[80%] h-[148px] bg-[#253B8E] bg-opacity-0 flex justify-between rounded-[20px] pr-7  mt-30">
+      <div className=" sm:w-[80%] sm:h-[148px] bg-[#253B8E] bg-opacity-0 flex justify-between rounded-[20px] pr-7  mt-30">
         <div className="flex items-center">
           <div>
             <h1 className="font-peyda-medium text-[25px] text-white">
